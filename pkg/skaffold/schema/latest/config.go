@@ -898,6 +898,24 @@ type DeployType struct {
 
 	// CloudRunDeploy *alpha* deploys to Google Cloud Run using the Cloud Run v1 API.
 	CloudRunDeploy *CloudRunDeploy `yaml:"cloudrun,omitempty"`
+
+	Terraform *TerraformDeploy `yaml:"terraform,omitempty"`
+}
+
+// CloudRunDeploy *alpha* deploys the container to Google Cloud Run.
+type TerraformDeploy struct {
+	// ProjectID the GCP Project to use for Cloud Run.
+	// If specified, all Services will be deployed to this project. If not specified,
+	// each Service will be deployed to the project specified in `metadata.namespace` of
+	// the Cloud Run manifest.
+	ProjectID string `yaml:"projectid,omitempty"`
+
+	// Region GCP location to use for the Cloud Run Deploy.
+	// Must be one of the regions listed in https://cloud.google.com/run/docs/locations.
+	Region string `yaml:"region,omitempty"`
+
+	// LifecycleHooks describes a set of lifecycle host hooks that are executed before and after the Cloud Run deployer.
+	LifecycleHooks TerraformDeployHooks `yaml:"hooks,omitempty"`
 }
 
 // CloudRunDeploy *alpha* deploys the container to Google Cloud Run.
@@ -1750,6 +1768,14 @@ type RenderHooks struct {
 
 // CloudRunDeployHooks describes the list of lifecycle hooks to execute in the host before and after the Cloud Run deployer.
 type CloudRunDeployHooks struct {
+	// PreHooks describes the list of lifecycle hooks to execute *before* the Cloud Run deployer.
+	PreHooks []HostHook `yaml:"before,omitempty"`
+	// PostHooks describes the list of lifecycle hooks to execute *after* the Cloud Run deployer.
+	PostHooks []HostHook `yaml:"after,omitempty"`
+}
+
+// CloudRunDeployHooks describes the list of lifecycle hooks to execute in the host before and after the Cloud Run deployer.
+type TerraformDeployHooks struct {
 	// PreHooks describes the list of lifecycle hooks to execute *before* the Cloud Run deployer.
 	PreHooks []HostHook `yaml:"before,omitempty"`
 	// PostHooks describes the list of lifecycle hooks to execute *after* the Cloud Run deployer.
