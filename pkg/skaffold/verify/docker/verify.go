@@ -27,6 +27,7 @@ import (
 	"time"
 
 	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/api/types/mount"
 	"github.com/docker/go-connections/nat"
 	"github.com/fatih/semgroup"
 	v1 "github.com/google/go-containerregistry/pkg/v1"
@@ -65,6 +66,7 @@ type Verifier struct {
 	envMap             map[string]string
 	resources          []*latest.PortForwardResource
 	once               sync.Once
+	//volumes            []string
 }
 
 func NewVerifier(ctx context.Context, cfg dockerutil.Config, labeller *label.DefaultLabeller, testCases []*latest.VerifyTestCase, resources []*latest.PortForwardResource, network string, envMap map[string]string) (*Verifier, error) {
@@ -98,7 +100,8 @@ func NewVerifier(ctx context.Context, cfg dockerutil.Config, labeller *label.Def
 		tracker:            tracker,
 		portManager:        dockerport.NewPortManager(), // fulfills Accessor interface
 		logger:             l,
-		monitor:            &status.NoopMonitor{},
+		//volumes:            cfg.GetVolumes(),
+		monitor: &status.NoopMonitor{},
 	}, nil
 }
 
@@ -221,12 +224,23 @@ func (v *Verifier) createAndRunContainer(ctx context.Context, out io.Writer, art
 	if len(tc.Container.Args) != 0 {
 		containerCfg.Cmd = tc.Container.Args
 	}
+
+	// mounts
+	bb := []mount.Mount{
+		{
+			Source: ".",
+			Target: "/workspace",
+			Type:   mount.TypeBind,
+		},
+	}
+
 	containerName := v.getContainerName(ctx, artifact.ImageName)
 	opts := dockerutil.ContainerCreateOpts{
 		Name:            containerName,
 		Network:         v.network,
 		ContainerConfig: containerCfg,
 		VerifyTestName:  tc.Name,
+		Mounts:          bb,
 	}
 
 	bindings, err := v.portManager.AllocatePorts(artifact.ImageName, v.resources, containerCfg, nat.PortMap{})

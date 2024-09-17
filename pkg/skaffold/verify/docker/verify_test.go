@@ -77,7 +77,9 @@ func Test_UseLocalImages(t *testing.T) {
 	testutil.Run(t, "", func(t *testutil.T) {
 		testEvent.InitializeState([]latest.Pipeline{{}})
 		ctx := context.TODO()
-		runCtx := &runcontext.RunContext{}
+		runCtx := &runcontext.RunContext{
+			// Add any necessary initialization here
+		}
 
 		fDockerDaemon := &fakeDockerDaemon{
 			LocalDaemon: docker.NewLocalDaemon(&testutil.FakeAPIClient{}, nil, false, nil),

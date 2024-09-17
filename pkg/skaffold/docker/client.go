@@ -62,6 +62,7 @@ type Config interface {
 	GetKubeContext() string
 	MinikubeProfile() string
 	GetInsecureRegistries() map[string]bool
+	//GetVolumes() []string
 	Mode() config.RunMode
 }
 
