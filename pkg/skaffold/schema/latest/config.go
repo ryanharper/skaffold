@@ -25,8 +25,8 @@ import (
 	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
 )
 
-// !!! WARNING !!! This config version is already released, please DO NOT MODIFY the structs in this file.
-const Version string = "skaffold/v4beta11"
+// This config version is not yet released, it is SAFE TO MODIFY the structs in this file.
+const Version string = "skaffold/v4beta12"
 
 // NewSkaffoldConfig creates a SkaffoldConfig
 func NewSkaffoldConfig() util.VersionedConfig {
@@ -496,6 +496,8 @@ type KanikoCache struct {
 	TTL string `yaml:"ttl,omitempty"`
 	// CacheCopyLayers enables caching of copy layers.
 	CacheCopyLayers bool `yaml:"cacheCopyLayers,omitempty"`
+	// CacheRunLayers enables caching of run layers (default=true).
+	CacheRunLayers *bool `yaml:"cacheRunLayers,omitempty"`
 }
 
 // ClusterDetails *beta* describes how to do an on-cluster build.
@@ -1554,6 +1556,15 @@ type KanikoArtifact struct {
 	// CopyTimeout is the timeout for copying build contexts to a cluster.
 	// Defaults to 5 minutes (`5m`).
 	CopyTimeout string `yaml:"copyTimeout,omitempty"`
+
+	// BuildContextCompressionLevel is the gzip compression level for the build context.
+	// Defaults to `1`.
+	// 0: NoCompression
+	// 1: BestSpeed
+	// 9: BestCompression
+	// -1: DefaultCompression
+	// -2: HuffmanOnly
+	BuildContextCompressionLevel *int `yaml:"buildContextCompressionLevel,omitempty"`
 }
 
 // DockerArtifact describes an artifact built from a Dockerfile,
