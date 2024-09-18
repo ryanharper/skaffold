@@ -21,7 +21,9 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"os"
 	"path"
+	"path/filepath"
 	"strings"
 	"sync"
 	"time"
@@ -225,22 +227,52 @@ func (v *Verifier) createAndRunContainer(ctx context.Context, out io.Writer, art
 		containerCfg.Cmd = tc.Container.Args
 	}
 
-	// mounts
-	bb := []mount.Mount{
+	pwd, _ := os.Getwd()
+
+	// Initialize mounts with the current working directory
+	vols := []mount.Mount{
 		{
-			Source: ".",
+			Source: pwd,
 			Target: "/workspace",
 			Type:   mount.TypeBind,
 		},
 	}
 
+	// Get the user's home directory
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		fmt.Println("Error getting home directory:", err)
+		return err
+	}
+
+	// Check for the .kube directory and add it to mounts if it exists
+	kubeDir := filepath.Join(homeDir, ".kube")
+	if _, err := os.Stat(kubeDir); err == nil {
+		vols = append(vols, mount.Mount{
+			Source: kubeDir,
+			Target: filepath.Join("/root", ".kube"),
+			Type:   mount.TypeBind,
+		})
+	}
+
+	// Check for the .config/gcloud directory and add it to mounts if it exists
+	gcloudDir := filepath.Join(homeDir, ".config", "gcloud")
+	if _, err := os.Stat(gcloudDir); err == nil {
+		vols = append(vols, mount.Mount{
+			Source: gcloudDir,
+			Target: filepath.Join("/root", ".config", "gcloud"),
+			Type:   mount.TypeBind,
+		})
+	}
+
+	// Set the cotainer config
 	containerName := v.getContainerName(ctx, artifact.ImageName)
 	opts := dockerutil.ContainerCreateOpts{
 		Name:            containerName,
 		Network:         v.network,
 		ContainerConfig: containerCfg,
 		VerifyTestName:  tc.Name,
-		Mounts:          bb,
+		Mounts:          vols,
 	}
 
 	bindings, err := v.portManager.AllocatePorts(artifact.ImageName, v.resources, containerCfg, nat.PortMap{})
