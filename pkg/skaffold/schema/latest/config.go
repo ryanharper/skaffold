@@ -901,7 +901,7 @@ type DeployType struct {
 	// CloudRunDeploy *alpha* deploys to Google Cloud Run using the Cloud Run v1 API.
 	CloudRunDeploy *CloudRunDeploy `yaml:"cloudrun,omitempty"`
 
-	Terraform *TerraformDeploy `yaml:"terraform,omitempty"`
+	TerraformDeploy *TerraformDeploy `yaml:"terraform,omitempty"`
 }
 
 // CloudRunDeploy *alpha* deploys the container to Google Cloud Run.
