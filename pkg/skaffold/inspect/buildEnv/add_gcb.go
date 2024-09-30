@@ -18,6 +18,7 @@ package inspect
 
 import (
 	"context"
+	"fmt"
 	"io"
 
 	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
@@ -29,6 +30,7 @@ import (
 )
 
 func AddGcbBuildEnv(ctx context.Context, out io.Writer, opts inspect.Options) error {
+
 	formatter := inspect.OutputFormatter(out, opts.OutFormat)
 	cfgs, err := inspect.GetConfigSet(ctx, config.SkaffoldOptions{
 		ConfigurationFile:   opts.Filename,
@@ -40,17 +42,20 @@ func AddGcbBuildEnv(ctx context.Context, out io.Writer, opts inspect.Options) er
 		formatter.WriteErr(err)
 		return err
 	}
+	formatter.Write("Adding Google Cloud Build build environment...><><><><><><><><><><><><><")
 	if opts.Profile == "" {
 		// empty profile flag implies that the new build env needs to be added to the default pipeline.
 		// for these cases, don't add the new env definition to any configs imported as dependencies.
 		cfgs = cfgs.SelectRootConfigs()
 		for _, cfg := range cfgs {
-			if cfg.Build.GoogleCloudBuild != nil && (*cfg.Build.GoogleCloudBuild != latest.GoogleCloudBuild{}) {
+			if cfg.Build.GoogleCloudBuild != nil && (cfg.Build.GoogleCloudBuild != &latest.GoogleCloudBuild{}) {
 				formatter.WriteErr(inspect.BuildEnvAlreadyExists(inspect.BuildEnvs.GoogleCloudBuild, cfg.SourceFile, ""))
+
 				return err
 			}
 			cfg.Build.GoogleCloudBuild = constructGcbDefinition(cfg.Build.GoogleCloudBuild, opts.BuildEnvOptions)
 			cfg.Build.LocalBuild = nil
+
 			cfg.Build.Cluster = nil
 		}
 	} else {
@@ -65,9 +70,17 @@ func AddGcbBuildEnv(ctx context.Context, out io.Writer, opts inspect.Options) er
 			if index < 0 {
 				index = len(cfg.Profiles)
 				cfg.Profiles = append(cfg.Profiles, latest.Profile{Name: opts.Profile})
+				fmt.Println("<><><><><><><><><><><><><><><")
+				//fmt.Println(cfg.Profiles[index].Build.GoogleCloudBuild.AvailableSecrets)
+				formatter.Write("<><><><><><><><><><><><><><><")
+				//formatter.Write("<><><><><><><><><><><><><><><" + cfg.Profiles[index].Build.GoogleCloudBuild.AvailableSecrets["something"])
 			}
-			if cfg.Profiles[index].Build.GoogleCloudBuild != nil && (*cfg.Profiles[index].Build.GoogleCloudBuild != latest.GoogleCloudBuild{}) {
+			if cfg.Profiles[index].Build.GoogleCloudBuild != nil && (cfg.Profiles[index].Build.GoogleCloudBuild != &latest.GoogleCloudBuild{}) {
 				formatter.WriteErr(inspect.BuildEnvAlreadyExists(inspect.BuildEnvs.GoogleCloudBuild, cfg.SourceFile, opts.Profile))
+				fmt.Println("<><><><><><><><><><><><><><><")
+				//fmt.Println(cfg.Profiles[index].Build.GoogleCloudBuild.AvailableSecrets)
+				formatter.Write("<><><><><><><><><><><><><><><")
+				//formatter.Write("<><><><><><><><><><><><><><><" + cfg.Profiles[index].Build.GoogleCloudBuild.AvailableSecrets["something"])
 				return err
 			}
 			cfg.Profiles[index].Build.GoogleCloudBuild = constructGcbDefinition(cfg.Profiles[index].Build.GoogleCloudBuild, opts.BuildEnvOptions)
@@ -77,6 +90,7 @@ func AddGcbBuildEnv(ctx context.Context, out io.Writer, opts inspect.Options) er
 			addProfileActivationStanza(cfg, opts.Profile)
 		}
 	}
+
 	return inspect.MarshalConfigSet(cfgs)
 }
 
@@ -109,6 +123,8 @@ func constructGcbDefinition(existing *latest.GoogleCloudBuild, opts inspect.Buil
 	if opts.WorkerPool != "" {
 		b.WorkerPool = opts.WorkerPool
 	}
+	b.AvailableSecrets = existing.AvailableSecrets
+
 	return &b
 }
 
