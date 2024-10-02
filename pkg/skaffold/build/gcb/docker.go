@@ -42,13 +42,47 @@ func (b *Builder) dockerBuildSpec(a *latest.Artifact, tag string, platforms plat
 	if err != nil {
 		return cloudbuild.Build{}, err
 	}
+
 	var steps []*cloudbuild.BuildStep
+	var volumes []*cloudbuild.Volume
+	var waitFors []string
+	for _, step := range b.PreBuildSteps {
+
+		for _, v := range step.Volumes {
+			volumes = append(volumes, &cloudbuild.Volume{
+				Name: v.Name,
+				Path: v.Path,
+			})
+
+		}
+		waitFors = append(waitFors, step.ID)
+		steps = append(steps, &cloudbuild.BuildStep{
+			Name:                 step.Name,
+			Id:                   step.ID,
+			Entrypoint:           step.Entrypoint,
+			SecretEnv:            step.SecretEnv,
+			Env:                  step.Env,
+			Volumes:              volumes,
+			AutomapSubstitutions: step.AutomapSubstitutions,
+			Dir:                  step.Dir,
+			AllowExitCodes:       step.AllowExitCodes,
+			AllowFailure:         step.AllowFailure,
+			Script:               step.Script,
+			Args:                 step.Args,
+			WaitFor:              step.WaitFor,
+		})
+	}
+
 	steps = append(steps, platformEmulatorInstallStep(b.GoogleCloudBuild, platforms)...)
 	steps = append(steps, b.cacheFromSteps(a.DockerArtifact, platforms)...)
+
 	buildStep := &cloudbuild.BuildStep{
-		Name: b.DockerImage,
-		Args: args,
+		Name:    b.DockerImage,
+		Args:    args,
+		WaitFor: waitFors,
+		Volumes: volumes,
 	}
+
 	if platforms.IsNotEmpty() {
 		// cross-platform build requires buildkit enabled
 		buildStep.Env = append(buildStep.Env, "DOCKER_BUILDKIT=1")
@@ -66,6 +100,7 @@ func platformEmulatorInstallStep(cfg *latest.GoogleCloudBuild, p platform.Matche
 		// if the build is not multi-platform, or it only targets linux/amd64, then skip platform emulator install step.
 		return nil
 	}
+
 	step := defaultPlatformEmulatorInstallStep
 	if cfg.PlatformEmulatorInstallStep != nil {
 		step = *cfg.PlatformEmulatorInstallStep

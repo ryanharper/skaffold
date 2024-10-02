@@ -29,27 +29,27 @@ import (
 )
 
 func (b *Builder) buildSpec(ctx context.Context, artifact *latest.Artifact, tag string, platforms platform.Matcher, bucket, object string) (cloudbuild.Build, error) {
-	// Artifact specific build spec
-	buildSpec, err := b.buildSpecForArtifact(ctx, artifact, tag, platforms)
-	//var secrets cloudbuild.Secrets
-
+	// Instantiate an empty SecretmanagerSecret struct
 	var iter []*cloudbuild.SecretManagerSecret
 
-	//var bt = []cloudbuild.SecretManagerSecret
+	// Artifact specific build spec
+	buildSpec, err := b.buildSpecForArtifact(ctx, artifact, tag, platforms)
 
+	// Check if there was an error in the buildSpecForArtifact function
 	if err != nil {
 		return buildSpec, err
 	}
 
+	// Check if the artifact has a SecretManagerSecret
 	if b.AvailableSecrets.SecretManager != nil {
 		for _, secret := range b.AvailableSecrets.SecretManager {
-			tt := cloudbuild.SecretManagerSecret{
+			secrets := cloudbuild.SecretManagerSecret{
 				Env:             secret.Env,
 				VersionName:     secret.VersionName,
 				ForceSendFields: []string{},
 				NullFields:      []string{},
 			}
-			iter = append(iter, &tt)
+			iter = append(iter, &secrets)
 		}
 	}
 
@@ -79,30 +79,6 @@ func (b *Builder) buildSpec(ctx context.Context, artifact *latest.Artifact, tag 
 	if buildSpec.Steps == nil {
 		buildSpec.Steps = []*cloudbuild.BuildStep{}
 	}
-
-	buildSpec.Steps = append(buildSpec.Steps, &cloudbuild.BuildStep{
-		Name:       "gcr.io/cloud-builders/gsutil",
-		Id:         "gsutil",
-		Entrypoint: "bash",
-		Args:       []string{"-c", fmt.Sprintf("echo \"$$TEST\" > /workspace/%s ; cat /workspace/.netrc", ".netrc")},
-		// Volumes: []*cloudbuild.Volume{
-		// 	{
-		// 		Name: "secret-volume",
-		// 		Path: "/workspace/.netrc",
-		// 	},
-		// },
-		SecretEnv: []string{"TEST"},
-	})
-
-	// - name: 'gcr.io/cloud-builders/gsutil'
-	// entrypoint: 'bash'
-	// args:
-	//   - '-c'
-	//   - |
-	//     echo "$$MY_SECRET_CONTENT" > /workspace/my-secret.txt
-	// volumes:
-	//   - name: 'secret-volume'
-	//     path: /workspace
 
 	buildSpec.AvailableSecrets.SecretManager = iter
 
