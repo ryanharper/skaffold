@@ -48,7 +48,6 @@ func ServerHandler(server Server, handler jsonrpc2.Handler) jsonrpc2.Handler {
 }
 
 // serverDispatch implements jsonrpc2.Handler.
-//
 //nolint:funlen,gocognit
 func serverDispatch(ctx context.Context, server Server, reply jsonrpc2.Replier, req jsonrpc2.Request) (handled bool, err error) {
 	if ctx.Err() != nil {

@@ -11,7 +11,6 @@ import (
 )
 
 // MarshalJSONObject implements gojay.MarshalerJSONObject.
-//
 //nolint:funlen,gocritic // TODO(zchee): fix gocritic:typeSwitchVar
 func (v *ServerCapabilities) MarshalJSONObject(enc *gojay.Encoder) {
 	switch v.TextDocumentSync.(type) {
@@ -201,7 +200,6 @@ func (v *ServerCapabilities) MarshalJSONObject(enc *gojay.Encoder) {
 func (v *ServerCapabilities) IsNil() bool { return v == nil }
 
 // UnmarshalJSONObject implements gojay.UnmarshalerJSONObject.
-//
 //nolint:funlen
 func (v *ServerCapabilities) UnmarshalJSONObject(dec *gojay.Decoder, k string) error {
 	switch k {

@@ -41,7 +41,6 @@ var (
 type ProgressToken interface{}
 
 // NewProgressToken returns a new ProgressToken.
-//
 //nolint:gocritic
 func NewProgressToken(s string) *ProgressToken {
 	var iface interface{} = s
@@ -49,7 +48,6 @@ func NewProgressToken(s string) *ProgressToken {
 }
 
 // NewNumberProgressToken returns a new number ProgressToken.
-//
 //nolint:gocritic
 func NewNumberProgressToken(n int32) *ProgressToken {
 	var iface interface{} = n
