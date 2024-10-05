@@ -3,19 +3,19 @@ module github.com/ryanharper/skaffold/v2
 go 1.22
 
 // these require code change may remove these later
-exclude (
-	github.com/opencontainers/image-spec v1.1.0-rc3
-	github.com/opencontainers/image-spec v1.1.0-rc4
-)
-
-// Unit tests fail due to a breaking change in reference.Parse() from this version.
-exclude github.com/docker/distribution v2.8.3+incompatible
-
-// this version requires code change may remove these later
-exclude go.opentelemetry.io/otel/metric v0.37.0
-
-// doesn't work well with windows
-exclude github.com/karrick/godirwalk v1.17.0
+//exclude (
+//	github.com/opencontainers/image-spec v1.1.0-rc3
+//	github.com/opencontainers/image-spec v1.1.0-rc4
+//)
+//
+//// Unit tests fail due to a breaking change in reference.Parse() from this version.
+//exclude github.com/docker/distribution v2.8.3+incompatible
+//
+//// this version requires code change may remove these later
+//exclude go.opentelemetry.io/otel/metric v0.37.0
+//
+//// doesn't work well with windows
+//exclude github.com/karrick/godirwalk v1.17.0 -->
 
 require (
 	4d63.com/tz v1.2.0
@@ -38,7 +38,7 @@ require (
 	github.com/containerd/containerd v1.7.13
 	github.com/distribution/reference v0.5.0
 	github.com/docker/cli v25.0.3+incompatible
-	github.com/docker/distribution v2.8.2+incompatible
+	github.com/docker/distribution v2.8.3+incompatible
 	github.com/docker/docker v25.0.5+incompatible
 	github.com/docker/go-connections v0.5.0
 	github.com/dustin/go-humanize v1.0.1
@@ -58,7 +58,7 @@ require (
 	github.com/heroku/color v0.0.6
 	github.com/imdario/mergo v0.3.16
 	github.com/joho/godotenv v1.4.0
-	github.com/karrick/godirwalk v1.16.1
+	github.com/karrick/godirwalk v1.17.0
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51
 	github.com/krishicks/yaml-patch v0.0.10
 	github.com/letsencrypt/boulder v0.0.0-20231026200631-000cd05d5491
