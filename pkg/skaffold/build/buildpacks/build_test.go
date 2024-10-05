@@ -27,12 +27,12 @@ import (
 	"github.com/docker/docker/api/types/registry"
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/platform"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/platform"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 type fakePack struct {

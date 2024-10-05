@@ -24,12 +24,12 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	kubernetesclient "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/client"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	schemautil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	kubernetesclient "github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/client"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	schemautil "github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 // ResourceForwarder is responsible for forwarding user defined port forwarding resources and automatically forwarding

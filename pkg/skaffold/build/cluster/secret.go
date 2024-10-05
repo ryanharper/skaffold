@@ -26,10 +26,10 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	typedV1 "k8s.io/client-go/kubernetes/typed/core/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/kaniko"
-	kubernetesclient "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/client"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/kaniko"
+	kubernetesclient "github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/client"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 )
 
 const (

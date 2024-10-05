@@ -20,11 +20,11 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	deployerr "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/error"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/types"
-	sErrors "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	deployerr "github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/error"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/types"
+	sErrors "github.com/ryanharper/skaffold/v2/pkg/skaffold/errors"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
 )
 
 var (

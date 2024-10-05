@@ -32,15 +32,15 @@ import (
 	"k8s.io/apimachinery/pkg/util/wait"
 	corev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/kaniko"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes"
-	kubernetesclient "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/client"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/platform"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/kaniko"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes"
+	kubernetesclient "github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/client"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/platform"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 const (

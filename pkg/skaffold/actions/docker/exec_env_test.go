@@ -23,13 +23,13 @@ import (
 
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 
-	dockerport "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/docker/port"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/label"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	dockerport "github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/docker/port"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 type fakeDockerDaemon struct {

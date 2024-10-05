@@ -31,10 +31,10 @@ import (
 	"github.com/google/go-containerregistry/pkg/v1/mutate"
 	"github.com/google/go-containerregistry/pkg/v1/random"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/ko"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/platform"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/ko"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/platform"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 )
 
 func TestBuildAndPushKoImageProgrammatically(t *testing.T) {

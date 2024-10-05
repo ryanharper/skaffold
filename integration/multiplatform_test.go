@@ -26,9 +26,9 @@ import (
 	v1 "github.com/opencontainers/image-spec/specs-go/v1"
 	k8sv1 "k8s.io/api/core/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/integration/skaffold"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/integration/skaffold"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 const (

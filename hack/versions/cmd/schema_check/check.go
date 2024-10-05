@@ -19,7 +19,7 @@ package main
 import (
 	"github.com/sirupsen/logrus"
 
-	"github.com/GoogleContainerTools/skaffold/v2/hack/versions/pkg/schema"
+	"github.com/ryanharper/skaffold/v2/hack/versions/pkg/schema"
 )
 
 func main() {

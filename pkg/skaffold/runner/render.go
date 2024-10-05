@@ -22,15 +22,15 @@ import (
 	"io"
 	"time"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	eventV2 "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/instrumentation"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	eventV2 "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/instrumentation"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/util"
 )
 
 func (r *SkaffoldRunner) Render(ctx context.Context, out io.Writer, builds []graph.Artifact, offline bool) (manifest.ManifestListByConfig, error) {

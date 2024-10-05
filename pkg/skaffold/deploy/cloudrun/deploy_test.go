@@ -31,15 +31,15 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 	k8syaml "sigs.k8s.io/yaml"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/label"
-	sErrors "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/runner/runcontext"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
+	sErrors "github.com/ryanharper/skaffold/v2/pkg/skaffold/errors"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/runner/runcontext"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 const (

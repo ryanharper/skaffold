@@ -26,10 +26,10 @@ import (
 	"strings"
 	"testing"
 
-	kubernetesclient "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/client"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	kubernetesclient "github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/client"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 const SimpleManifest = `apiVersion: v1

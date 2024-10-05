@@ -29,8 +29,8 @@ import (
 	"k8s.io/client-go/kubernetes/fake"
 	k8stesting "k8s.io/client-go/testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/client"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/client"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func pod(name string) *v1.Pod {

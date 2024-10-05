@@ -27,16 +27,16 @@ import (
 	"os"
 	"sort"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/buildpacks"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/kaniko"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/instrumentation"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/platform"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/buildpacks"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/kaniko"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/instrumentation"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/platform"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 // For testing

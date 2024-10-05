@@ -26,11 +26,11 @@ import (
 	"github.com/google/ko/pkg/commands/options"
 	specs "github.com/opencontainers/image-spec/specs-go/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/platform"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/platform"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/version"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 const (

@@ -25,8 +25,8 @@ import (
 
 	"github.com/docker/cli/cli/config/configfile"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestAutoConfigureGCRCredentialHelper(t *testing.T) {

@@ -27,7 +27,7 @@ import (
 	"github.com/google/go-containerregistry/pkg/authn"
 	"github.com/google/go-containerregistry/pkg/name"
 
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 // based on https://cloud.google.com/container-registry/docs/advanced-authentication#linux-macos

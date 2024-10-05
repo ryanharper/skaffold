@@ -27,17 +27,17 @@ import (
 	"sigs.k8s.io/kustomize/kyaml/kio"
 	"sigs.k8s.io/kustomize/kyaml/yaml"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/instrumentation"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/generate"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/kptfile"
-	rUtil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/renderer/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/transform"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/validate"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/instrumentation"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/generate"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/kptfile"
+	rUtil "github.com/ryanharper/skaffold/v2/pkg/skaffold/render/renderer/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/transform"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/validate"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 type Kpt struct {

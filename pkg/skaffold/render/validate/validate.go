@@ -21,12 +21,12 @@ import (
 	"fmt"
 	"os/exec"
 
-	sErrors "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/kptfile"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
+	sErrors "github.com/ryanharper/skaffold/v2/pkg/skaffold/errors"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/kptfile"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
 )
 
 var (

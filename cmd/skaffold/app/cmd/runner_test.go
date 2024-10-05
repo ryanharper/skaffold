@@ -24,12 +24,12 @@ import (
 
 	"github.com/blang/semver"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/validation"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/update"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/validation"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/update"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestCreateNewRunner(t *testing.T) {

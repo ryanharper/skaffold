@@ -20,14 +20,14 @@ import (
 	"context"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/actions"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/actions/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/actions/k8sjob"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/label"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/runner/runcontext"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/actions"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/actions/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/actions/k8sjob"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/runner/runcontext"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 // ActionsRunner defines the API used to run custom actions.

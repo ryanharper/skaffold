@@ -22,9 +22,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/debugging"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/debugging"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
 )
 
 // for tests

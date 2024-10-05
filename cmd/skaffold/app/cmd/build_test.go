@@ -24,14 +24,14 @@ import (
 	"os"
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/cmd/skaffold/app/flags"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/runner"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/runner/runcontext"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/cmd/skaffold/app/flags"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/runner"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/runner/runcontext"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 type mockRunner struct {

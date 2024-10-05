@@ -25,12 +25,12 @@ import (
 	"github.com/docker/docker/api/types/container"
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/label"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/runner/runcontext"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
-	testEvent "github.com/GoogleContainerTools/skaffold/v2/testutil/event"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/runner/runcontext"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/testutil"
+	testEvent "github.com/ryanharper/skaffold/v2/testutil/event"
 )
 
 type fakeDockerDaemon struct {

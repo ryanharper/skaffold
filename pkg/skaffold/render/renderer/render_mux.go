@@ -21,14 +21,14 @@ import (
 	"io"
 	"strconv"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	eventV2 "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/hooks"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/instrumentation"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util/stringset"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	eventV2 "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/hooks"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/instrumentation"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util/stringset"
 )
 
 // GroupRenderer maintains the slice of all `Renderer`s and their respective lifecycle hooks defined in a single Skaffold config.

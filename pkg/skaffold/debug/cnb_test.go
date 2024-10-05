@@ -25,8 +25,8 @@ import (
 	cnb "github.com/buildpacks/lifecycle/platform/files"
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug/types"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug/types"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestIsCNBImage(t *testing.T) {

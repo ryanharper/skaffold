@@ -29,13 +29,13 @@ import (
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	sErrors "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/instrumentation"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/platform"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	sErrors "github.com/ryanharper/skaffold/v2/pkg/skaffold/errors"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/instrumentation"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/platform"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/version"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
 )
 
 const (

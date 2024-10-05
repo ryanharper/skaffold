@@ -562,6 +562,7 @@ func (v *TextDocumentClientCapabilities) MarshalJSONObject(enc *gojay.Encoder) {
 func (v *TextDocumentClientCapabilities) IsNil() bool { return v == nil }
 
 // UnmarshalJSONObject implements gojay.UnmarshalerJSONObject.
+//
 //nolint:funlen,gocognit
 func (v *TextDocumentClientCapabilities) UnmarshalJSONObject(dec *gojay.Decoder, k string) error {
 	switch k {

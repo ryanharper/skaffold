@@ -23,9 +23,9 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/inspect"
-	buildEnv "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/inspect/buildEnv"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/inspect"
+	buildEnv "github.com/ryanharper/skaffold/v2/pkg/skaffold/inspect/buildEnv"
 )
 
 var buildEnvFlags = struct {

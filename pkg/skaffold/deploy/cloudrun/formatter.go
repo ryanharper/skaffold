@@ -19,7 +19,7 @@ package cloudrun
 import (
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
 )
 
 type LogFormatter struct {

@@ -21,10 +21,10 @@ import (
 
 	v1 "k8s.io/api/core/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug/types"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/debugging/adapter"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug/types"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/debugging/adapter"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestNetcoreTransformerApply(t *testing.T) {

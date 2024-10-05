@@ -21,9 +21,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/warnings"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/warnings"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestCheckVersion(t *testing.T) {

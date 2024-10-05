@@ -33,11 +33,11 @@ import (
 	"github.com/moby/buildkit/frontend/dockerfile/parser"
 	"github.com/moby/buildkit/frontend/dockerfile/shell"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	sErrors "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	sErrors "github.com/ryanharper/skaffold/v2/pkg/skaffold/errors"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
 )
 
 type FromTo struct {

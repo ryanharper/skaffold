@@ -20,13 +20,13 @@ import (
 	"context"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/access"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/status"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/sync"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/access"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/status"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/sync"
 )
 
 // Deployer is the Deploy API of skaffold and responsible for deploying

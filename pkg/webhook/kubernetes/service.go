@@ -26,9 +26,9 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/wait"
 
-	kubernetesclient "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/client"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/webhook/constants"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/webhook/labels"
+	kubernetesclient "github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/client"
+	"github.com/ryanharper/skaffold/v2/pkg/webhook/constants"
+	"github.com/ryanharper/skaffold/v2/pkg/webhook/labels"
 )
 
 // CreateService creates a service for the deployment to bind to

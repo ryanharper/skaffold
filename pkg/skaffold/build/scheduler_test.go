@@ -28,12 +28,12 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/platform"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/tag"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
-	testEvent "github.com/GoogleContainerTools/skaffold/v2/testutil/event"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/platform"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/tag"
+	"github.com/ryanharper/skaffold/v2/testutil"
+	testEvent "github.com/ryanharper/skaffold/v2/testutil/event"
 )
 
 func TestGetBuild(t *testing.T) {

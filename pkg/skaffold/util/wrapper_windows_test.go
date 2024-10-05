@@ -24,7 +24,7 @@ import (
 	"os/exec"
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestGetCommand(t *testing.T) {

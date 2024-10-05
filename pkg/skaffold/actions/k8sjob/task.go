@@ -29,12 +29,12 @@ import (
 	apiwatch "k8s.io/apimachinery/pkg/watch"
 	typesbatchv1 "k8s.io/client-go/kubernetes/typed/batch/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/kubectl"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	k8sjobutil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/k8sjob"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/k8sjob/tracker"
-	kubernetesclient "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/client"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/kubectl"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	k8sjobutil "github.com/ryanharper/skaffold/v2/pkg/skaffold/k8sjob"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/k8sjob/tracker"
+	kubernetesclient "github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/client"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 )
 
 type Task struct {

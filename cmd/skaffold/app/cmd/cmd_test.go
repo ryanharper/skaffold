@@ -19,8 +19,8 @@ package cmd
 import (
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/update"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/update"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestPreReleaseVersion(t *testing.T) {

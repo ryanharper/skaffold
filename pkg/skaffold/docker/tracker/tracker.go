@@ -19,7 +19,7 @@ package tracker
 import (
 	"sync"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
 )
 
 type Container struct {

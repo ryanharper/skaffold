@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/GoogleContainerTools/skaffold/v2/integration/skaffold"
-	event "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
+	"github.com/ryanharper/skaffold/v2/integration/skaffold"
+	event "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
 )
 
 const (

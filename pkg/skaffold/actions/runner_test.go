@@ -24,10 +24,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
-	testEvent "github.com/GoogleContainerTools/skaffold/v2/testutil/event"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/testutil"
+	testEvent "github.com/ryanharper/skaffold/v2/testutil/event"
 )
 
 type mockTask struct {

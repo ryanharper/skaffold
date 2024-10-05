@@ -23,10 +23,10 @@ import (
 
 	"cloud.google.com/go/profiler"
 
-	"github.com/GoogleContainerTools/skaffold/v2/cmd/skaffold/app"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/instrumentation"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version"
+	"github.com/ryanharper/skaffold/v2/cmd/skaffold/app"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/instrumentation"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/version"
 )
 
 func main() {

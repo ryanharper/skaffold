@@ -27,8 +27,8 @@ import (
 	"github.com/blang/semver"
 	shell "github.com/kballard/go-shellquote"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 var (

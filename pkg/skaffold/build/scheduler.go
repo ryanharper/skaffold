@@ -25,16 +25,16 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event"
-	eventV2 "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/instrumentation"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/platform"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/tag"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/event"
+	eventV2 "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/instrumentation"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/platform"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/tag"
 )
 
 type ArtifactBuilder func(ctx context.Context, out io.Writer, artifact *latest.Artifact, tag string, platforms platform.Matcher) (string, error)

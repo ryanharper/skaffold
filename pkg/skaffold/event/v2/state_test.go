@@ -22,10 +22,10 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"google.golang.org/protobuf/testing/protocmp"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	proto "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	proto "github.com/ryanharper/skaffold/v2/proto/v2"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestGetState(t *testing.T) {

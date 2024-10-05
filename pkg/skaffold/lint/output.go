@@ -26,9 +26,9 @@ import (
 	"strings"
 	"text/template"
 
-	sErrors "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/format"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
+	sErrors "github.com/ryanharper/skaffold/v2/pkg/skaffold/errors"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/format"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
 )
 
 const (

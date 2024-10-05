@@ -25,10 +25,10 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug/types"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/debugging/adapter"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug/types"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/debugging/adapter"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestDlvTransformerApply(t *testing.T) {

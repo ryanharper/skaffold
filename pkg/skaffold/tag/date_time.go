@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 )
 
 const tagTime = "2006-01-02_15-04-05.999_MST"

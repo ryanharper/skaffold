@@ -27,8 +27,8 @@ import (
 	cnb "github.com/buildpacks/lifecycle/platform/files"
 	shell "github.com/kballard/go-shellquote"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug/types"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug/types"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 )
 
 const (

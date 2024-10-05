@@ -27,10 +27,10 @@ import (
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
-	next "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/v3alpha1"
-	pkgutil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
+	next "github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/v3alpha1"
+	pkgutil "github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 var artifactOverridesRegexp = regexp.MustCompile("/deploy/helm/releases/[0-9]+/artifactOverrides/image")

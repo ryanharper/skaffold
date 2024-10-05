@@ -23,7 +23,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/diag/validator"
+	"github.com/ryanharper/skaffold/v2/pkg/diag/validator"
 )
 
 type Diagnose interface {

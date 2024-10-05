@@ -17,7 +17,7 @@ limitations under the License.
 package tracker
 
 import (
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
 )
 
 // Tracker is responsible for tracking deployed containers

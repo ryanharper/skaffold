@@ -25,10 +25,10 @@ import (
 	"github.com/fatih/semgroup"
 	"golang.org/x/sync/errgroup"
 
-	eventV2 "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
+	eventV2 "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 )
 
 type Runner struct {

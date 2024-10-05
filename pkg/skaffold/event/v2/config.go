@@ -16,7 +16,7 @@ limitations under the License.
 
 package v2
 
-import "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+import "github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 
 type Config interface {
 	GetKubeContext() string

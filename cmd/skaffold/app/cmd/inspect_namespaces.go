@@ -24,9 +24,9 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/inspect"
-	namespaces "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/inspect/namespaces"
-	olog "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/inspect"
+	namespaces "github.com/ryanharper/skaffold/v2/pkg/skaffold/inspect/namespaces"
+	olog "github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 )
 
 func cmdNamespaces() *cobra.Command {

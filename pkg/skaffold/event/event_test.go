@@ -31,12 +31,12 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"google.golang.org/protobuf/testing/protocmp"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	schemautil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	schemautil "github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 var targetPort = proto.IntOrString{Type: 0, IntVal: 2001}

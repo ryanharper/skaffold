@@ -29,8 +29,8 @@ import (
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/metric/metricdata"
 
-	"github.com/GoogleContainerTools/skaffold/v2/fs"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/fs"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 )
 
 var (

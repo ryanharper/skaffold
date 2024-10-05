@@ -19,8 +19,8 @@ package ko
 import (
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/version"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestPublishOptions(t *testing.T) {

@@ -20,10 +20,10 @@ import (
 	"context"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	initConfig "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/prompt"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	initConfig "github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/prompt"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 )
 
 var (

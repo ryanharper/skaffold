@@ -29,11 +29,11 @@ import (
 	"google.golang.org/api/option"
 	"google.golang.org/api/run/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/label"
-	eventV2 "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/gcp"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	proto "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
+	eventV2 "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/gcp"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	proto "github.com/ryanharper/skaffold/v2/proto/v2"
 )
 
 var (

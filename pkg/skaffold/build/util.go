@@ -20,8 +20,8 @@ import (
 	"context"
 	"strings"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
 )
 
 // MergeWithPreviousBuilds merges previous or prebuilt build artifacts with

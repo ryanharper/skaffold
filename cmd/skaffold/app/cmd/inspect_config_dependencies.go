@@ -24,9 +24,9 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/inspect"
-	configDependencies "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/inspect/configDependencies"
-	olog "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/inspect"
+	configDependencies "github.com/ryanharper/skaffold/v2/pkg/skaffold/inspect/configDependencies"
+	olog "github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 )
 
 func cmdConfigDependencies() *cobra.Command {

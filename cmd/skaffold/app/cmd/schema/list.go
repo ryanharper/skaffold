@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema"
 )
 
 var OutputType string

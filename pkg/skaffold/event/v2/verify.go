@@ -19,9 +19,9 @@ package v2
 import (
 	"fmt"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	sErrors "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/errors"
-	proto "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	sErrors "github.com/ryanharper/skaffold/v2/pkg/skaffold/errors"
+	proto "github.com/ryanharper/skaffold/v2/proto/v2"
 )
 
 // VerifyInProgress adds an event to mark a render process starts.

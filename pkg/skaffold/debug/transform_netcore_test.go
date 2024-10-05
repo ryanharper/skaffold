@@ -19,8 +19,8 @@ package debug
 import (
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug/types"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug/types"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestNetcoreTransformer_MatchRuntime(t *testing.T) {

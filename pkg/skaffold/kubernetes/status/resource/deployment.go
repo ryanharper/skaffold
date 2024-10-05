@@ -24,15 +24,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/diag"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/diag/validator"
-	sErrors "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event"
-	eventV2 "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubectl"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
-	protoV2 "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/diag"
+	"github.com/ryanharper/skaffold/v2/pkg/diag/validator"
+	sErrors "github.com/ryanharper/skaffold/v2/pkg/skaffold/errors"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/event"
+	eventV2 "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubectl"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
+	protoV2 "github.com/ryanharper/skaffold/v2/proto/v2"
 )
 
 const (

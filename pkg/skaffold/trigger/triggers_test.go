@@ -26,9 +26,9 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/rjeczalik/notify"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	fsNotify "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/trigger/fsnotify"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	fsNotify "github.com/ryanharper/skaffold/v2/pkg/skaffold/trigger/fsnotify"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestNewTrigger(t *testing.T) {

@@ -16,7 +16,7 @@ limitations under the License.
 
 package v2
 
-import proto "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
+import proto "github.com/ryanharper/skaffold/v2/proto/v2"
 
 // DebuggingContainerStarted notifies that a debuggable container has appeared.
 func DebuggingContainerStarted(podName, containerName, namespace, artifact, runtime, workingDir string, debugPorts map[string]uint32) {

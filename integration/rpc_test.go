@@ -34,11 +34,11 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/types/known/emptypb"
 
-	"github.com/GoogleContainerTools/skaffold/v2/integration/skaffold"
-	event "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
-	protoV2 "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/integration/skaffold"
+	event "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
+	protoV2 "github.com/ryanharper/skaffold/v2/proto/v2"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 var (

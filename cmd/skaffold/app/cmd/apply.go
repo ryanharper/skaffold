@@ -25,9 +25,9 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/runner"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/runner"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
 )
 
 // NewCmdApply describes the CLI command to apply manifests to a cluster.

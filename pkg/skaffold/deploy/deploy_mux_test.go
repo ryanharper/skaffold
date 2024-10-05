@@ -24,16 +24,16 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/access"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/debug"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/status"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/sync"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
-	testEvent "github.com/GoogleContainerTools/skaffold/v2/testutil/event"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/access"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/status"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/sync"
+	"github.com/ryanharper/skaffold/v2/testutil"
+	testEvent "github.com/ryanharper/skaffold/v2/testutil/event"
 )
 
 func NewMockDeployer() *MockDeployer {

@@ -25,9 +25,9 @@ import (
 
 	kyaml "sigs.k8s.io/kustomize/kyaml/yaml"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/parser/configlocations"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/parser/configlocations"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 /*

@@ -23,10 +23,10 @@ import (
 	"github.com/buildpacks/pack/pkg/project"
 	"github.com/buildpacks/pack/pkg/project/types"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/misc"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/misc"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 func GetEnv(a *latest.Artifact, mode config.RunMode) (map[string]string, error) {

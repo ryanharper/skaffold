@@ -21,7 +21,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/integration/skaffold"
+	"github.com/ryanharper/skaffold/v2/integration/skaffold"
 )
 
 const (

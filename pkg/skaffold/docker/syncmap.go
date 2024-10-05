@@ -23,8 +23,8 @@ import (
 	"path"
 	"path/filepath"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/walk"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/walk"
 )
 
 // SyncMap creates a map of syncable files by looking at the COPY/ADD commands in the Dockerfile.

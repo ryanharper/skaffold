@@ -19,13 +19,13 @@ package runner
 import (
 	"context"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/label"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/runner/runcontext"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/verify"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/verify/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/verify/k8sjob"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/runner/runcontext"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/verify"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/verify/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/verify/k8sjob"
 )
 
 // GetVerifier creates a verifier from a given RunContext and deploy pipeline definitions.

@@ -20,7 +20,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestReadConfiguration(t *testing.T) {

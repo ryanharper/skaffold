@@ -20,8 +20,8 @@ import (
 	"context"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 var realWorkDir = util.RealWorkDir

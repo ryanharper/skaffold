@@ -19,8 +19,8 @@ package git
 import (
 	"fmt"
 
-	sErrors "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
+	sErrors "github.com/ryanharper/skaffold/v2/pkg/skaffold/errors"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
 )
 
 // SyncDisabledErr returns error when git repository sync is turned off by the user but the repository clone doesn't exist inside the cache directory.

@@ -23,9 +23,9 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 var (

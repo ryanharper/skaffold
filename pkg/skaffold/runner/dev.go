@@ -25,19 +25,19 @@ import (
 
 	"github.com/cenkalti/backoff/v4"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event"
-	eventV2 "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/filemon"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/instrumentation"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/sync"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util/term"
-	timeutil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util/time"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/event"
+	eventV2 "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/filemon"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/instrumentation"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/sync"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util/term"
+	timeutil "github.com/ryanharper/skaffold/v2/pkg/skaffold/util/time"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
 )
 
 var (

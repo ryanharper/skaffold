@@ -26,10 +26,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	fsNotify "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/trigger/fsnotify"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	fsNotify "github.com/ryanharper/skaffold/v2/pkg/skaffold/trigger/fsnotify"
 )
 
 // Trigger describes a mechanism that triggers the watch.

@@ -20,7 +20,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 )
 
 // WaitForDeletions configures the wait for pending deletions.

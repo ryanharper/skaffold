@@ -32,9 +32,9 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/walk"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/yaml"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/walk"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/yaml"
 )
 
 const (

@@ -22,11 +22,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/jib"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	initconfig "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/config"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/jib"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	initconfig "github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/config"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 type builder struct {

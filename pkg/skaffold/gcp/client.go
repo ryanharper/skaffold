@@ -21,8 +21,8 @@ import (
 
 	"google.golang.org/api/option"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/version"
 )
 
 // ClientOptions returns a list of options to be configured when

@@ -33,8 +33,8 @@ import (
 	"github.com/google/go-containerregistry/pkg/authn"
 	"github.com/google/go-containerregistry/pkg/v1/google"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/gcp"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/gcp"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 )
 
 const (

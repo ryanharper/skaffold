@@ -22,7 +22,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/GoogleContainerTools/skaffold/v2/fs"
+	"github.com/ryanharper/skaffold/v2/fs"
 )
 
 // Print prints the json schema for a given version.

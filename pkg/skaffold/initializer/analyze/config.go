@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/errors"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema"
 )
 
 type skaffoldConfigAnalyzer struct {

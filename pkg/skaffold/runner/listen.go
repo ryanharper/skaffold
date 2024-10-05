@@ -22,10 +22,10 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/filemon"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/trigger"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/filemon"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/trigger"
 )
 
 func NewSkaffoldListener(monitor filemon.Monitor, trigger trigger.Trigger, cache graph.SourceDependenciesCache,

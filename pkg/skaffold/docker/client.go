@@ -32,11 +32,11 @@ import (
 	"github.com/docker/docker/client"
 	"github.com/docker/go-connections/tlsconfig"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/cluster"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/cluster"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/version"
 )
 
 // minikube 1.13.0 renumbered exit codes

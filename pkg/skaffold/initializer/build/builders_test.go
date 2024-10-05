@@ -21,13 +21,13 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/buildpacks"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/jib"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/prompt"
-	tag "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/tag/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/warnings"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/buildpacks"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/jib"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/prompt"
+	tag "github.com/ryanharper/skaffold/v2/pkg/skaffold/tag/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/warnings"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestResolveBuilderImages(t *testing.T) {

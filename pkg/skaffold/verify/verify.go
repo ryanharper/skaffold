@@ -20,9 +20,9 @@ import (
 	"context"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/status"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/status"
 )
 
 // Verifier is the Verify API of skaffold and responsible for deploying

@@ -19,8 +19,8 @@ package v2
 import (
 	"fmt"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	proto "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	proto "github.com/ryanharper/skaffold/v2/proto/v2"
 )
 
 func CloudRunServiceReady(r, url, revision string) {

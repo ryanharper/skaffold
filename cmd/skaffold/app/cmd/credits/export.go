@@ -27,7 +27,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/GoogleContainerTools/skaffold/v2/fs"
+	"github.com/ryanharper/skaffold/v2/fs"
 )
 
 var Path string

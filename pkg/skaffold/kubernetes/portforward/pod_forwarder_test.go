@@ -28,12 +28,12 @@ import (
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/apimachinery/pkg/watch"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	schemautil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
-	testEvent "github.com/GoogleContainerTools/skaffold/v2/testutil/event"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	schemautil "github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/testutil"
+	testEvent "github.com/ryanharper/skaffold/v2/testutil/event"
 )
 
 func TestAutomaticPortForwardPod(t *testing.T) {

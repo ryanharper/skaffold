@@ -24,15 +24,15 @@ import (
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 	"github.com/pkg/errors"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/actions"
-	dockerport "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/docker/port"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/label"
-	dockerutil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker/logger"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker/tracker"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/actions"
+	dockerport "github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/docker/port"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
+	dockerutil "github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker/logger"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker/tracker"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 )
 
 type ExecEnv struct {

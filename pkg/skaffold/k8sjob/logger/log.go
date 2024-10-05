@@ -29,14 +29,14 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/util/wait"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/label"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/docker/logger"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/k8sjob/tracker"
-	kubernetesclient "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/client"
-	logstream "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/log/stream"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker/logger"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/k8sjob/tracker"
+	kubernetesclient "github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/client"
+	logstream "github.com/ryanharper/skaffold/v2/pkg/skaffold/log/stream"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 )
 
 type Logger struct {

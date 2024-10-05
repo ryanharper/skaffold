@@ -22,7 +22,7 @@ import (
 	"os/exec"
 	"sync"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 // CLI holds parameters to run kubectl.

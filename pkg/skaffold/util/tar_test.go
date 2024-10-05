@@ -26,8 +26,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestCreateTar(t *testing.T) {

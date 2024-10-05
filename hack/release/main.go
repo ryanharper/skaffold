@@ -30,8 +30,8 @@ import (
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/blang/semver"
 
-	"github.com/GoogleContainerTools/skaffold/v2/hack/versions/pkg/schema"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/hack/versions/pkg/schema"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 )
 
 type changelogData struct {

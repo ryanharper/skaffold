@@ -19,10 +19,10 @@ package v2beta16
 import (
 	"context"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
-	next "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/v2beta17"
-	pkgutil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
+	next "github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/v2beta17"
+	pkgutil "github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
 )
 
 // Upgrade upgrades a configuration to the next version.

@@ -8,6 +8,7 @@ import (
 // Package attempts to gather info for the requested package.
 //
 // From the `go help list` docs:
+//
 //	The -find flag causes list to identify the named packages but not
 //	resolve their dependencies: the Imports and Deps lists will be empty.
 //
@@ -46,6 +47,7 @@ func (h Here) Package(p string) (Info, error) {
 // Package attempts to gather info for the requested package.
 //
 // From the `go help list` docs:
+//
 //	The -find flag causes list to identify the named packages but not
 //	resolve their dependencies: the Imports and Deps lists will be empty.
 //

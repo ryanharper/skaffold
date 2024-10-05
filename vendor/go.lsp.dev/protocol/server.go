@@ -417,7 +417,7 @@ func (s *server) CodeLensResolve(ctx context.Context, params *CodeLens) (_ *Code
 
 // ColorPresentation sends the request from the client to the server to obtain a list of presentations for a color value at a given location.
 //
-// Clients can use the result to
+// # Clients can use the result to
 //
 // - modify a color reference.
 // - show in a color picker and let users pick one of the presentations.

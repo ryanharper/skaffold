@@ -27,7 +27,7 @@ import (
 	"cloud.google.com/go/storage"
 	"github.com/bmatcuk/doublestar"
 
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 // Regex to transform a/b** to a/b*/**

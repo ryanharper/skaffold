@@ -21,7 +21,7 @@ import (
 
 	batchv1 "k8s.io/api/batch/v1"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
 )
 
 type Job struct {

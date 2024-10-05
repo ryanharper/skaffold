@@ -22,15 +22,15 @@ import (
 	"io"
 	"os"
 
-	"github.com/GoogleContainerTools/skaffold/v2/cmd/skaffold/app/tips"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/analyze"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/build"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/deploy"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/prompt"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/render"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/yaml"
+	"github.com/ryanharper/skaffold/v2/cmd/skaffold/app/tips"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/analyze"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/build"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/deploy"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/prompt"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/render"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/yaml"
 )
 
 // DoInit executes the `skaffold init` flow.

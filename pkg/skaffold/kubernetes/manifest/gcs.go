@@ -23,7 +23,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/gcs/client"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/gcs/client"
 )
 
 var ManifestsFromGCS = "manifests_from_gcs"

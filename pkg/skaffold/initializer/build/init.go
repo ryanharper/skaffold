@@ -20,11 +20,11 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/errors"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/initializer/prompt"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/generator"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/errors"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/initializer/prompt"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/generator"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
 )
 
 type defaultBuildInitializer struct {

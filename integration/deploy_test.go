@@ -28,11 +28,11 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/GoogleContainerTools/skaffold/v2/cmd/skaffold/app/flags"
-	"github.com/GoogleContainerTools/skaffold/v2/integration/skaffold"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/walk"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/cmd/skaffold/app/flags"
+	"github.com/ryanharper/skaffold/v2/integration/skaffold"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/walk"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestBuildDeploy(t *testing.T) {

@@ -20,15 +20,15 @@ import (
 	"context"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/graph"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/renderer/helm"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/renderer/kpt"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/renderer/kubectl"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/render/renderer/kustomize"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/renderer/helm"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/renderer/kpt"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/renderer/kubectl"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/render/renderer/kustomize"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 )
 
 type Renderer interface {

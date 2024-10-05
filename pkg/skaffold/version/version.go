@@ -23,8 +23,8 @@ import (
 
 	"github.com/blang/semver"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/user"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/user"
 )
 
 var version, gitCommit, buildDate, client string

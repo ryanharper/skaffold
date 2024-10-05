@@ -19,8 +19,8 @@ package util
 import (
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestListBuilders(t *testing.T) {

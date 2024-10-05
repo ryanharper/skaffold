@@ -44,11 +44,11 @@ import (
 	"go.opentelemetry.io/otel/trace"
 	"google.golang.org/api/option"
 
-	"github.com/GoogleContainerTools/skaffold/v2/fs"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/user"
-	"github.com/GoogleContainerTools/skaffold/v2/proto/v1"
+	"github.com/ryanharper/skaffold/v2/fs"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/user"
+	"github.com/ryanharper/skaffold/v2/proto/v1"
 )
 
 func ExportMetrics(exitCode int) error {

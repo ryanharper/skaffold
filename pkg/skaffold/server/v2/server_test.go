@@ -20,8 +20,8 @@ import (
 	"context"
 	"testing"
 
-	proto "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	proto "github.com/ryanharper/skaffold/v2/proto/v2"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 // Mock structs and functions

@@ -25,9 +25,9 @@ import (
 
 	"github.com/google/go-cmp/cmp/cmpopts"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	eventV2 "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	eventV2 "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestGetUnderlyingWriter(t *testing.T) {

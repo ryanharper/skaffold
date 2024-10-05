@@ -23,9 +23,9 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	event "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	proto "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	event "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	proto "github.com/ryanharper/skaffold/v2/proto/v2"
 )
 
 var (

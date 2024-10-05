@@ -25,11 +25,11 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 
-	deployutil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/deploy/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubectl"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/logger"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/latest"
+	deployutil "github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubectl"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/logger"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 )
 
 // for testing

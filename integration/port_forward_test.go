@@ -19,14 +19,14 @@ package integration
 import (
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/integration/skaffold"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubectl"
-	kubectx "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/context"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/portforward"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/output/log"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/runner/runcontext"
+	"github.com/ryanharper/skaffold/v2/integration/skaffold"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubectl"
+	kubectx "github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/context"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/portforward"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/runner/runcontext"
 )
 
 func TestPortForward(t *testing.T) {

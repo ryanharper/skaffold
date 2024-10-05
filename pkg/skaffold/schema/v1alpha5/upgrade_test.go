@@ -19,9 +19,9 @@ package v1alpha5
 import (
 	"testing"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/v1beta1"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/yaml"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/v1beta1"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/yaml"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestUpgrade_removeACR(t *testing.T) {

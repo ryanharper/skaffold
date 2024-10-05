@@ -29,9 +29,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/GoogleContainerTools/skaffold/v2/cmd/skaffold/app/cmd"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	timeutil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util/time"
+	"github.com/ryanharper/skaffold/v2/cmd/skaffold/app/cmd"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	timeutil "github.com/ryanharper/skaffold/v2/pkg/skaffold/util/time"
 )
 
 // RunBuilder is used to build a command line to run `skaffold`.

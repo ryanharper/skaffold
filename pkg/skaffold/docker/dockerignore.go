@@ -23,7 +23,7 @@ import (
 
 	"github.com/moby/patternmatcher"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/walk"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/walk"
 )
 
 // NewDockerIgnorePredicate creates a walk.Predicate that checks if directory entries

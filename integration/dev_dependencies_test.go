@@ -22,10 +22,10 @@ import (
 
 	"k8s.io/apimachinery/pkg/util/wait"
 
-	"github.com/GoogleContainerTools/skaffold/v2/integration/skaffold"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/constants"
-	event "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/event/v2"
-	V2proto "github.com/GoogleContainerTools/skaffold/v2/proto/v2"
+	"github.com/ryanharper/skaffold/v2/integration/skaffold"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/constants"
+	event "github.com/ryanharper/skaffold/v2/pkg/skaffold/event/v2"
+	V2proto "github.com/ryanharper/skaffold/v2/proto/v2"
 )
 
 func TestDev_WithDependencies(t *testing.T) {

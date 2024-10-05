@@ -22,10 +22,10 @@ import (
 	"testing"
 	"time"
 
-	sConfig "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/config"
-	schemaUtil "github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/util"
-	"github.com/GoogleContainerTools/skaffold/v2/testutil"
+	sConfig "github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
+	schemaUtil "github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/util"
+	"github.com/ryanharper/skaffold/v2/testutil"
 )
 
 func TestDisplaySurveyForm(t *testing.T) {

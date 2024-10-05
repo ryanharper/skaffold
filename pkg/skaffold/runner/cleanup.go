@@ -20,7 +20,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
 )
 
 func (r *SkaffoldRunner) Cleanup(ctx context.Context, out io.Writer, dryRun bool, manifestListByConfig manifest.ManifestListByConfig, command string) error {
