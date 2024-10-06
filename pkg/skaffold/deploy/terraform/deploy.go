@@ -4,128 +4,219 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"sync"
+	"os/exec"
 
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/access"
-	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/debug"
-	deployerr "github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/error"
-	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
-	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/types"
-	dockerutil "github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
-	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker/debugger"
-	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker/logger"
-	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker/tracker"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/log"
 	olog "github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/status"
-	pkgsync "github.com/ryanharper/skaffold/v2/pkg/skaffold/sync"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/sync"
 )
 
 type Deployer struct {
 	configName string
-	cfg        *latest.TerraformDeploy
-
-	debugger           debug.Debugger
-	logger             *logger.Logger
-	syncer             pkgsync.Syncer
-	monitor            status.Monitor
-	tracker            *tracker.ContainerTracker
-	client             dockerutil.LocalDaemon
-	network            string
-	networkDeployed    bool
-	globalConfig       string
-	insecureRegistries map[string]bool
-	resources          []*latest.PortForwardResource
-	once               sync.Once
-	labeller           *label.DefaultLabeller
+	*latest.TerraformDeploy
 }
 
-func NewDeployer(ctx context.Context, cfg dockerutil.Config, labeller *label.DefaultLabeller, d *latest.TerraformDeploy, resources []*latest.PortForwardResource, artifacts []*latest.Artifact, configName string) (*Deployer, error) {
-
-	client, err := dockerutil.NewAPIClient(ctx, cfg)
-	if err != nil {
-		return nil, err
-	}
-
-	tracker := tracker.NewContainerTracker()
-	l, err := logger.NewLogger(ctx, tracker, cfg, true)
-	if err != nil {
-		return nil, err
-	}
-
-	var dbg *debugger.DebugManager
-	if cfg.ContainerDebugging() {
-		debugHelpersRegistry, err := config.GetDebugHelpersRegistry(cfg.GlobalConfig())
-		if err != nil {
-			return nil, deployerr.DebugHelperRetrieveErr(fmt.Errorf("retrieving debug helpers registry: %w", err))
-		}
-		dbg = debugger.NewDebugManager(cfg.GetInsecureRegistries(), debugHelpersRegistry)
-	}
-
+func NewDeployer(cfg latest.TerraformDeploy, configName string) (*Deployer, error) {
 	return &Deployer{
-		cfg:                d,
-		globalConfig:       cfg.GlobalConfig(),
-		insecureRegistries: cfg.GetInsecureRegistries(),
-		tracker:            tracker,
-
-		client:   client,
-		debugger: dbg,
-		logger:   l,
-		syncer:   pkgsync.NewContainerSyncer(),
-		monitor:  &status.NoopMonitor{},
-		labeller: labeller,
+		configName:      configName,
+		TerraformDeploy: &cfg,
 	}, nil
 }
 
-func (d *Deployer) Deploy(ctx context.Context, out io.Writer, builds []types.Artifact) error {
-	//d.logger.Println("Starting Terraform deployment")
-	olog.Entry(ctx).Warnf("unable to retrieve mount from debug init container: debugging may not work correctly!")
-	// Your Terraform deployment logic here
-	fmt.Println("Deploying Terraform")
-	//d.logger.Println("Finished Terraform deployment")
+func (t *Deployer) Deploy(ctx context.Context, out io.Writer, builds []graph.Artifact, labellers manifest.ManifestListByConfig) error {
+	olog.Entry(ctx).Infof("Terraform Deployer: Starting deployment for config %s", t.configName)
+
+	// Create a map of deployments by name for easy lookup
+	deploymentMap := make(map[string]*latest.TerrformDeployments)
+	for i := range t.Deployments {
+		deploymentMap[t.Deployments[i].Name] = &t.Deployments[i]
+	}
+
+	// Create a list to store the order of deployments
+	deploymentOrder := make([]*latest.TerrformDeployments, 0, len(t.Deployments))
+
+	// Create a set to keep track of deployments in the current path
+	visited := make(map[string]bool)
+
+	// Helper function to add a deployment and its dependencies to the order
+	var addToOrder func(*latest.TerrformDeployments) error
+	addToOrder = func(deployment *latest.TerrformDeployments) error {
+		// Check for self-dependency
+		if contains(deployment.DependsOn, deployment.Name) {
+			return fmt.Errorf("deployment %s depends on itself", deployment.Name)
+		}
+
+		// Check if the deployment is already in the order
+		for _, d := range deploymentOrder {
+			if d.Name == deployment.Name {
+				return nil
+			}
+		}
+
+		// Check for circular dependencies
+		if visited[deployment.Name] {
+			return fmt.Errorf("circular dependency detected involving %s", deployment.Name)
+		}
+		visited[deployment.Name] = true
+
+		// Add dependencies first
+		for _, depName := range deployment.DependsOn {
+			if dep, ok := deploymentMap[depName]; ok {
+				if err := addToOrder(dep); err != nil {
+					return err
+				}
+			} else {
+				olog.Entry(ctx).Warnf("Dependency %s not found for deployment %s", depName, deployment.Name)
+			}
+		}
+
+		// Add the deployment itself
+		deploymentOrder = append(deploymentOrder, deployment)
+		delete(visited, deployment.Name) // Remove from visited set after processing
+		return nil
+	}
+
+	// Build the deployment order
+	for _, deployment := range t.Deployments {
+		if err := addToOrder(&deployment); err != nil {
+			return err
+		}
+	}
+
+	// Execute deployments in order
+	for _, deployment := range deploymentOrder {
+		if err := t.deployTerraform(ctx, out, deployment); err != nil {
+			return fmt.Errorf("failed to deploy %s: %w", deployment.Name, err)
+		}
+	}
+
+	olog.Entry(ctx).Infof("Terraform Deployer: All deployments completed for config %s", t.configName)
 	return nil
 }
 
-func (d *Deployer) Cleanup(ctx context.Context, out io.Writer, dryRun bool, byConfig manifest.ManifestListByConfig) error {
-	//d.logger.Println("Starting Terraform cleanup")
-	olog.Entry(ctx).Warnf("unable to retrieve mount from debug init container: debugging may not work correctly!")
-	// Your Terraform cleanup logic here
+// Helper function to check if a slice contains a string
+func contains(slice []string, str string) bool {
+	for _, v := range slice {
+		if v == str {
+			return true
+		}
+	}
+	return false
+}
 
-	//d.logger.Println("Finished Terraform cleanup")
+func (t *Deployer) deployTerraform(ctx context.Context, out io.Writer, deployment *latest.TerrformDeployments) error {
+	workingDir := deployment.Dir
+
+	// Run terraform init
+	initArgs := []string{"init"}
+	for key, value := range deployment.BackendConfig {
+		initArgs = append(initArgs, fmt.Sprintf("-backend-config=%s=%s", key, value))
+	}
+	if err := t.runTerraformCommand(ctx, out, workingDir, initArgs...); err != nil {
+		return fmt.Errorf("failed to run terraform init: %w", err)
+	}
+
+	// Set or select workspace if specified
+	if deployment.Workspace != "" {
+		workspaceArgs := []string{"workspace", "select", "-or-create", deployment.Workspace}
+		if err := t.runTerraformCommand(ctx, out, workingDir, workspaceArgs...); err != nil {
+			return fmt.Errorf("failed to set terraform workspace: %w", err)
+		}
+	}
+
+	// Prepare apply command with vars, var-files, and extra args
+	applyArgs := []string{"apply"}
+	for key, value := range deployment.Vars {
+		applyArgs = append(applyArgs, "-var", fmt.Sprintf("%s=%s", key, value))
+	}
+	for _, varFile := range deployment.VarFiles {
+		applyArgs = append(applyArgs, "-var-file", varFile)
+	}
+	applyArgs = append(applyArgs, deployment.ExtraArgs...)
+	if deployment.AutoApprove {
+		applyArgs = append(applyArgs, "-auto-approve")
+	}
+
+	// Run terraform apply
+	if err := t.runTerraformCommand(ctx, out, workingDir, applyArgs...); err != nil {
+		return fmt.Errorf("failed to run terraform apply: %w", err)
+	}
+
+	olog.Entry(ctx).Infof("Terraform Deployer: Deployment completed for %s", deployment.Name)
 	return nil
 }
 
-func (d *Deployer) GetAccessor() access.Accessor {
-	fmt.Println("Deploying Terraform")
-	//olog.Entry(ctx).Warnf("unable to retrieve mount from debug init container: debugging may not work correctly!")
+func (t *Deployer) Dependencies() ([]string, error) {
+	olog.Entry(context.Background()).Infof("Terraform Deployer: Checking dependencies")
+	return nil, nil
+}
+
+func (t *Deployer) Cleanup(ctx context.Context, out io.Writer, dryRun bool, _ manifest.ManifestListByConfig) error {
+	olog.Entry(ctx).Infof("Terraform Deployer: Starting cleanup for config %s", t.configName)
+
+	for _, deployment := range t.Deployments {
+		workingDir := deployment.Dir
+
+		if dryRun {
+			fmt.Fprintf(out, "Terraform Deployer: Would run 'terraform destroy' for %s (dry run)\n", deployment.Dir)
+		} else {
+			// Prepare destroy command with vars, var-files, and extra args
+			destroyArgs := []string{"destroy"}
+			for key, value := range deployment.Vars {
+				destroyArgs = append(destroyArgs, "-var", fmt.Sprintf("%s=%s", key, value))
+			}
+			for _, varFile := range deployment.VarFiles {
+				destroyArgs = append(destroyArgs, "-var-file", varFile)
+			}
+			destroyArgs = append(destroyArgs, deployment.ExtraArgs...)
+			destroyArgs = append(destroyArgs, "-auto-approve")
+
+			if err := t.runTerraformCommand(ctx, out, workingDir, destroyArgs...); err != nil {
+				return fmt.Errorf("failed to run terraform destroy: %w", err)
+			}
+		}
+
+		olog.Entry(ctx).Infof("Terraform Deployer: Cleanup completed for %s", deployment.Dir)
+	}
+
+	olog.Entry(ctx).Infof("Terraform Deployer: All cleanups completed for config %s", t.configName)
 	return nil
 }
 
-func (d *Deployer) GetDebugger() debug.Debugger {
-	fmt.Println("Deploying Terraform")
-	//olog.Entry(ctx).Warnf("unable to retrieve mount from debug init container: debugging may not work correctly!")
-	return d.debugger
+func (t *Deployer) runTerraformCommand(ctx context.Context, out io.Writer, workingDir string, args ...string) error {
+	cmd := exec.CommandContext(ctx, "terraform", args...)
+	cmd.Dir = workingDir
+	cmd.Stdout = out
+	cmd.Stderr = out
+
+	olog.Entry(ctx).Infof("Running terraform command: %s", cmd.String())
+	return cmd.Run()
 }
 
-func (d *Deployer) GetLogger() *logger.Logger {
-	fmt.Println("Deploying Terraform")
-	return d.logger
+func (t *Deployer) ConfigName() string {
+	return t.configName
 }
 
-func (d *Deployer) GetSyncer() pkgsync.Syncer {
-	fmt.Println("Deploying Terraform")
-	return d.syncer
+// Implement other necessary methods (returning nil or no-op for now)
+
+// func (t *Deployer) GetAccessor() access.Accessor { return nil }
+// func (t *Deployer) GetDebugger() debug.Debugger  { return nil }
+func (t *Deployer) GetLogger() log.Logger {
+	return &log.NoopLogger{} // or implement a proper logger if needed
 }
 
-func (d *Deployer) GetStatusMonitor() status.Monitor {
-	fmt.Println("Deploying Terraform")
-	return d.monitor
-}
+// func (t *Deployer) GetStatusMonitor() status.Monitor                      { return nil }
+// func (t *Deployer) GetSyncer() sync.Syncer                                { return nil }
+func (t *Deployer) TrackBuildArtifacts(builds, deployed []graph.Artifact) {}
+func (t *Deployer) RegisterLocalImages(images []graph.Artifact)           {}
 
-func (d *Deployer) RegisterLocalImages([]graph.Artifact) {
-	fmt.Println("Deploying Terraform")
-	// all images are local, so this is a noop
-}
+func (t *Deployer) GetAccessor() access.Accessor     { return &access.NoopAccessor{} }
+func (t *Deployer) GetDebugger() debug.Debugger      { return &debug.NoopDebugger{} }
+func (t *Deployer) GetStatusMonitor() status.Monitor { return &status.NoopMonitor{} }
+func (t *Deployer) GetSyncer() sync.Syncer           { return &sync.NoopSyncer{} }

@@ -2,6 +2,8 @@ module github.com/ryanharper/skaffold/v2
 
 go 1.22
 
+toolchain go1.22.6
+
 require (
 	4d63.com/tz v1.2.0
 	cloud.google.com/go/cloudbuild v1.15.1

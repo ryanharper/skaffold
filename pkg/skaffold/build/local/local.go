@@ -31,9 +31,14 @@ import (
 // Build runs a docker build on the host and tags the resulting image with
 // its checksum. It streams build progress to the writer argument.
 func (b *Builder) Build(ctx context.Context, out io.Writer, a *latest.Artifact) build.ArtifactBuilder {
-	if b.prune {
-		b.localPruner.asynchronousCleanupOldImages(ctx, []string{a.ImageName})
-	}
+	// switch {
+	// case a.DockerArtifact != nil:
+	// 	return build.WithLogFile(b.buildArtifact, b.muted)
+	// case a.PackerArtifact != nil:
+	// 	return packer.NewBuilder(b.cfg).Build(ctx, out, a, "")
+	// default:
+	// 	return "", fmt.Errorf("unexpected artifact type: %+v", a.ArtifactType)
+	// }
 	builder := build.WithLogFile(b.buildArtifact, b.muted)
 	return builder
 }

@@ -29,6 +29,7 @@ import (
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/jib"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/ko"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/misc"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/build/packer"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/docker"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/graph"
@@ -151,6 +152,9 @@ func newPerArtifactBuilder(b *Builder, a *latest.Artifact) (artifactBuilder, err
 
 	case a.KoArtifact != nil:
 		return ko.NewArtifactBuilder(b.localDocker, b.pushImages, b.mode, b.insecureRegistries), nil
+
+	case a.PackerArtifact != nil:
+		return packer.NewBuilder(b.cfg, b.localDocker), nil
 
 	default:
 		return nil, fmt.Errorf("unexpected type %q for local artifact:\n%s", misc.ArtifactType(a), misc.FormatArtifact(a))

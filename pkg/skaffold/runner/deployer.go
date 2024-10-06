@@ -32,6 +32,7 @@ import (
 	kptV2 "github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/kpt"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/kubectl"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/label"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/deploy/terraform"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/manifest"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/kubernetes/status"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
@@ -95,6 +96,7 @@ func GetDeployer(ctx context.Context, runCtx *runcontext.RunContext, labeller *l
 		cloudRunDeployFound := false
 
 		for _, d := range pipelines.Deployers() {
+			log.Entry(ctx).Infof("Creating Terraform deployer for config %s", d)
 			if d.DockerDeploy != nil || d.KptDeploy != nil || d.KubectlDeploy != nil {
 				nonHelmDeployFound = true
 			}
@@ -139,11 +141,23 @@ func GetDeployer(ctx context.Context, runCtx *runcontext.RunContext, labeller *l
 	var deployers []deploy.Deployer
 	localDeploy := false
 	remoteDeploy := false
+
+	//log.Entry(ctx).Infof("Creating Terraform deployer for configs for TERRRAFORM %s", deployers)
 	for _, configName := range pipelines.AllOrderedConfigNames() {
 		pl := pipelines.GetForConfigName(configName)
 		d := pl.Deploy
 		r := pl.Render
 		dCtx := &deployerCtx{runCtx, d}
+
+		if d.TerraformDeploy != nil {
+			//log.Entry(ctx).Infof("Creating Terraform deployer for configs for INLOOP %s", d)
+			t, err := terraform.NewDeployer(*d.TerraformDeploy, configName)
+			if err != nil {
+				return nil, fmt.Errorf("creating terraform deployer: %w", err)
+			}
+			deployers = append(deployers, t)
+			remoteDeploy = false
+		}
 
 		if d.DockerDeploy != nil {
 			localDeploy = true
@@ -205,6 +219,7 @@ func GetDeployer(ctx context.Context, runCtx *runcontext.RunContext, labeller *l
 			}
 			deployers = append(deployers, deployer)
 		}
+
 	}
 
 	if localDeploy && remoteDeploy {
