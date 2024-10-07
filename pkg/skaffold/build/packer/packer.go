@@ -38,7 +38,7 @@ func (b *Builder) Build(ctx context.Context, out io.Writer, artifact *latest.Art
 	args := []string{"build"}
 	args = append(args, artifact.PackerArtifact.BuildArgs...)
 	args = append(args, "-var", fmt.Sprintf("image_name=%s", artifact.ImageName))
-
+	args = append(args, "-var", fmt.Sprintf("image_tag=%s", tag))
 	// if len(artifact.PackerArtifact.PostProcessors) > 0 {
 	// 	args = append(args, "-only", fmt.Sprintf("'%s'", artifact.PackerArtifact.PostProcessors))
 	// }

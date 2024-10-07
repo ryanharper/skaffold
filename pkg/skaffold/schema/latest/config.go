@@ -670,6 +670,26 @@ type TestCase struct {
 	// StructureTestArgs lists additional configuration arguments passed to `container-structure-test` binary.
 	// For example: `["--driver=tar", "--no-color", "-q"]`.
 	StructureTestArgs []string `yaml:"structureTestsArgs,omitempty"`
+
+	// GrypeTests lists the Grype tests to run on that artifact.
+	// For example: `["./test/*"]`.
+	GrypeTests []*GrypeTest `yaml:"grypeTests,omitempty" skaffold:"filepath"`
+
+	// TrivyTests lists the Trivy tests to run on that artifact.
+	// For example: `["./test/*"]`.
+	TrivyTests []*TrivyTest `yaml:"trivyTests,omitempty" skaffold:"filepath"`
+
+	// PackerTests lists the Packer tests to run on that artifact.
+	// For example: `["./test/*"]`.
+	PackerTests []string `yaml:"packerTests,omitempty" skaffold:"filepath"`
+}
+
+type GrypeTest struct {
+	Severity string `yaml:"severity,omitempty"`
+}
+
+type TrivyTest struct {
+	Severity string `yaml:"severity,omitempty"`
 }
 
 // Action describes a user defined action defined by a list of container to execute.
