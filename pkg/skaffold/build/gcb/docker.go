@@ -98,8 +98,6 @@ func (b *Builder) dockerBuildSpec(a *latest.Artifact, tag string, platforms plat
 	}
 	steps = append(steps, buildStep)
 
-	fmt.Println(b.BuilderConfig.SecretEnv[1])
-
 	return cloudbuild.Build{
 		Steps:  steps,
 		Images: []string{tag},
