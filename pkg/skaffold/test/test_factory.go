@@ -30,7 +30,9 @@ import (
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/latest"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/test/custom"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/test/grype"
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/test/structure"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/test/trivy"
 )
 
 type Config interface {
@@ -129,6 +131,19 @@ func getImageTesters(ctx context.Context, cfg docker.Config, imagesAreLocal func
 		isLocal, err := imagesAreLocal(tc.ImageName)
 		if err != nil {
 			return nil, err
+		}
+
+		if tc.GrypeTests != nil {
+			grypeRunner, err := grype.New(cfg, tc.ImageName, tc.Workspace, tc.GrypeTests)
+			if err != nil {
+				return nil, err
+			}
+			runners[tc.ImageName] = append(runners[tc.ImageName], grypeRunner)
+		}
+
+		if tc.TrivyTests != nil {
+			trivyRunner := trivy.New(cfg, tc.TrivyTests)
+			runners[tc.ImageName] = append(runners[tc.ImageName], trivyRunner)
 		}
 
 		if len(tc.StructureTests) != 0 {
