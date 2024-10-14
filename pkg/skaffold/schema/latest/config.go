@@ -497,6 +497,15 @@ type GoogleCloudBuild struct {
 		Script               string      `yaml:"script,omitempty"`
 		AutomapSubstitutions bool        `yaml:"automapSubstitutions,omitempty"`
 	} `yaml:"preBuildSteps,omitempty"`
+
+	// Allow you to plumb secrets to the base builder in gcb builds
+	BuilderConfig struct {
+		SecretEnv []string `yaml:"secretEnv,omitempty"`
+		Volumes   []struct {
+			Name string `yaml:"name"`
+			Path string `yaml:"path"`
+		} `yaml:"volumes,omitempty"`
+	} `yaml:"builderConfig,omitempty"`
 }
 
 type SM struct {

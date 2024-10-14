@@ -135,16 +135,17 @@ func (b *Builder) buildArtifactWithCloudBuild(ctx context.Context, out io.Writer
 	// Upload entire workspace for Jib projects to fix multi-module bug
 	// https://github.com/GoogleContainerTools/skaffold/issues/3477
 	// TODO: Avoid duplication (every Jib artifact will upload the entire workspace)
-	if artifact.JibArtifact != nil {
-		deps, err := jibAddWorkspaceToDependencies(artifact.Workspace, dependencies)
-		if err != nil {
-			return "", sErrors.NewErrorWithStatusCode(&proto.ActionableErr{
-				ErrCode: proto.StatusCode_BUILD_GCB_JIB_DEPENDENCY_ERR,
-				Message: fmt.Sprintf("walking workspace for Jib projects: %s", err),
-			})
-		}
-		dependencies = deps
+	//if artifact.JibArtifact != nil {
+
+	deps, err := jibAddWorkspaceToDependencies(artifact.Workspace, dependencies)
+	if err != nil {
+		return "", sErrors.NewErrorWithStatusCode(&proto.ActionableErr{
+			ErrCode: proto.StatusCode_BUILD_GCB_JIB_DEPENDENCY_ERR,
+			Message: fmt.Sprintf("walking workspace for Jib projects: %s", err),
+		})
 	}
+	dependencies = deps
+	//}
 
 	if err := sources.UploadToGCS(ctx, c, artifact, cbBucket, buildObject, dependencies); err != nil {
 		return "", sErrors.NewErrorWithStatusCode(&proto.ActionableErr{
