@@ -76,11 +76,20 @@ func (b *Builder) dockerBuildSpec(a *latest.Artifact, tag string, platforms plat
 	steps = append(steps, platformEmulatorInstallStep(b.GoogleCloudBuild, platforms)...)
 	steps = append(steps, b.cacheFromSteps(a.DockerArtifact, platforms)...)
 
+	var buildervolumes []*cloudbuild.Volume
+	for _, v := range b.BuilderConfig.Volumes {
+		buildervolumes = append(buildervolumes, &cloudbuild.Volume{
+			Name: v.Name,
+			Path: v.Path,
+		})
+
+	}
 	buildStep := &cloudbuild.BuildStep{
-		Name:    b.DockerImage,
-		Args:    args,
-		WaitFor: waitFors,
-		Volumes: volumes,
+		Name:      b.DockerImage,
+		Args:      args,
+		WaitFor:   waitFors,
+		Volumes:   buildervolumes,
+		SecretEnv: b.BuilderConfig.SecretEnv,
 	}
 
 	if platforms.IsNotEmpty() {
@@ -88,6 +97,8 @@ func (b *Builder) dockerBuildSpec(a *latest.Artifact, tag string, platforms plat
 		buildStep.Env = append(buildStep.Env, "DOCKER_BUILDKIT=1")
 	}
 	steps = append(steps, buildStep)
+
+	fmt.Println(b.BuilderConfig.SecretEnv[1])
 
 	return cloudbuild.Build{
 		Steps:  steps,
