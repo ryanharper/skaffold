@@ -86,7 +86,7 @@ func TestCreateSkaffoldConfig(t *testing.T) {
 						Env:       []string{"GOTRACEBACK=2"},
 						Flags:     []string{"-tags", "netgo"},
 						Labels: map[string]string{
-							"org.opencontainers.image.source": "https://github.com/GoogleContainerTools/skaffold.git",
+							"org.opencontainers.image.source": "https://github.com/ryanharper/skaffold.git",
 						},
 						Ldflags: []string{"-s", "-w"},
 						Main:    "./main",
@@ -128,7 +128,7 @@ func TestCreateSkaffoldConfig(t *testing.T) {
 									Env:       []string{"GOTRACEBACK=2"},
 									Flags:     []string{"-tags", "netgo"},
 									Labels: map[string]string{
-										"org.opencontainers.image.source": "https://github.com/GoogleContainerTools/skaffold.git",
+										"org.opencontainers.image.source": "https://github.com/ryanharper/skaffold.git",
 									},
 									Ldflags: []string{"-s", "-w"},
 									Main:    "./main",

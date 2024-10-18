@@ -42,7 +42,7 @@ limitations under the License.
 package v1beta12
 
 import (
-	"github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/schema/util"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/schema/util"
 )
 
 %sconst Version string = "skaffold/v1beta12"

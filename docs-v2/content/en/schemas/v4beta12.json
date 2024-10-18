@@ -647,6 +647,73 @@
             "custom"
           ],
           "additionalProperties": false
+        },
+        {
+          "properties": {
+            "context": {
+              "type": "string",
+              "description": "directory containing the artifact's sources.",
+              "x-intellij-html-description": "directory containing the artifact's sources.",
+              "default": "."
+            },
+            "hooks": {
+              "$ref": "#/definitions/BuildHooks",
+              "description": "describes a set of lifecycle hooks that are executed before and after each build of the target artifact.",
+              "x-intellij-html-description": "describes a set of lifecycle hooks that are executed before and after each build of the target artifact."
+            },
+            "image": {
+              "type": "string",
+              "description": "name of the image to be built.",
+              "x-intellij-html-description": "name of the image to be built.",
+              "examples": [
+                "gcr.io/k8s-skaffold/example"
+              ]
+            },
+            "packer": {
+              "$ref": "#/definitions/PackerArtifact",
+              "description": "builds images using HashiCorp Packer.",
+              "x-intellij-html-description": "builds images using HashiCorp Packer."
+            },
+            "platforms": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "description": "list of platforms to build this artifact image for. It overrides the values inferred through heuristics or provided in the top level `platforms` property or in the global config. If the target builder cannot build for atleast one of the specified platforms, then the build fails. Each platform is of the format `os[/arch[/variant]]`, e.g., `linux/amd64`. Example: `[\"linux/amd64\", \"linux/arm64\"]`.",
+              "x-intellij-html-description": "list of platforms to build this artifact image for. It overrides the values inferred through heuristics or provided in the top level <code>platforms</code> property or in the global config. If the target builder cannot build for atleast one of the specified platforms, then the build fails. Each platform is of the format <code>os[/arch[/variant]]</code>, e.g., <code>linux/amd64</code>. Example: <code>[&quot;linux/amd64&quot;, &quot;linux/arm64&quot;]</code>.",
+              "default": "[]"
+            },
+            "requires": {
+              "items": {
+                "$ref": "#/definitions/ArtifactDependency"
+              },
+              "type": "array",
+              "description": "describes build artifacts that this artifact depends on.",
+              "x-intellij-html-description": "describes build artifacts that this artifact depends on."
+            },
+            "runtimeType": {
+              "type": "string",
+              "description": "specifies the target language runtime for this artifact that is used to configure debug support. Should be one of `go`, `nodejs`, `jvm`, `python` or `netcore`. If unspecified the language runtime is inferred from common heuristics for the list of supported runtimes.",
+              "x-intellij-html-description": "specifies the target language runtime for this artifact that is used to configure debug support. Should be one of <code>go</code>, <code>nodejs</code>, <code>jvm</code>, <code>python</code> or <code>netcore</code>. If unspecified the language runtime is inferred from common heuristics for the list of supported runtimes."
+            },
+            "sync": {
+              "$ref": "#/definitions/Sync",
+              "description": "*beta* local files synced to pods instead of triggering an image build when modified. If no files are listed, sync all the files and infer the destination.",
+              "x-intellij-html-description": "<em>beta</em> local files synced to pods instead of triggering an image build when modified. If no files are listed, sync all the files and infer the destination.",
+              "default": "infer: [\"**/*\"]"
+            }
+          },
+          "preferredOrder": [
+            "image",
+            "context",
+            "sync",
+            "requires",
+            "hooks",
+            "platforms",
+            "runtimeType",
+            "packer"
+          ],
+          "additionalProperties": false
         }
       ],
       "description": "items that need to be built, along with the context in which they should be built.",
@@ -1139,6 +1206,28 @@
       "type": "object",
       "description": "*alpha* used to mount host volumes or directories in the build container.",
       "x-intellij-html-description": "<em>alpha</em> used to mount host volumes or directories in the build container."
+    },
+    "CBVolume": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "of the volume.",
+          "x-intellij-html-description": "of the volume."
+        },
+        "path": {
+          "type": "string",
+          "description": "to the volume.",
+          "x-intellij-html-description": "to the volume."
+        }
+      },
+      "preferredOrder": [
+        "name",
+        "path"
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "a volume for the cloudbuild job.",
+      "x-intellij-html-description": "a volume for the cloudbuild job."
     },
     "CloudRunDeploy": {
       "properties": {
@@ -1644,6 +1733,11 @@
           "description": "*beta* deadline for deployments to stabilize in seconds.",
           "x-intellij-html-description": "<em>beta</em> deadline for deployments to stabilize in seconds."
         },
+        "terraform": {
+          "$ref": "#/definitions/TerraformDeploy",
+          "description": "deploys a terraform project.",
+          "x-intellij-html-description": "deploys a terraform project."
+        },
         "tolerateFailuresUntilDeadline": {
           "type": "boolean",
           "description": "configures the Skaffold \"status-check\" to tolerate failures (flapping deployments, etc.) until the statusCheckDeadlineSeconds duration or k8s object timeouts such as progressDeadlineSeconds, etc.",
@@ -1657,6 +1751,7 @@
         "kpt",
         "kubectl",
         "cloudrun",
+        "terraform",
         "statusCheck",
         "statusCheckDeadlineSeconds",
         "tolerateFailuresUntilDeadline",
@@ -2041,6 +2136,90 @@
     },
     "GoogleCloudBuild": {
       "properties": {
+        "availableSecrets": {
+          "properties": {
+            "secretManager": {
+              "items": {
+                "properties": {
+                  "env": {
+                    "type": "string",
+                    "description": "environment variable to map the secret to.",
+                    "x-intellij-html-description": "environment variable to map the secret to."
+                  },
+                  "versionName": {
+                    "type": "string",
+                    "description": "of the secret manager secret you want to use.",
+                    "x-intellij-html-description": "of the secret manager secret you want to use."
+                  }
+                },
+                "preferredOrder": [
+                  "versionName",
+                  "env"
+                ],
+                "additionalProperties": false,
+                "type": "object"
+              },
+              "type": "array",
+              "description": "a list of secret manager secrets you want to use.",
+              "x-intellij-html-description": "a list of secret manager secrets you want to use.",
+              "default": "[]"
+            }
+          },
+          "preferredOrder": [
+            "secretManager"
+          ],
+          "additionalProperties": false,
+          "type": "object",
+          "description": "Set the Available secrets for the cloudbuild docker job.",
+          "x-intellij-html-description": "Set the Available secrets for the cloudbuild docker job."
+        },
+        "builderConfig": {
+          "properties": {
+            "secretEnv": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "description": "represents the environment variables to set from secret manager.",
+              "x-intellij-html-description": "represents the environment variables to set from secret manager.",
+              "default": "[]"
+            },
+            "volumes": {
+              "items": {
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "represents the name of the volume.",
+                    "x-intellij-html-description": "represents the name of the volume."
+                  },
+                  "path": {
+                    "type": "string",
+                    "description": "represents the path to the volume.",
+                    "x-intellij-html-description": "represents the path to the volume."
+                  }
+                },
+                "preferredOrder": [
+                  "name",
+                  "path"
+                ],
+                "additionalProperties": false,
+                "type": "object"
+              },
+              "type": "array",
+              "description": "represents the volumes to mount for the step.",
+              "x-intellij-html-description": "represents the volumes to mount for the step.",
+              "default": "[]"
+            }
+          },
+          "preferredOrder": [
+            "secretEnv",
+            "volumes"
+          ],
+          "additionalProperties": false,
+          "type": "object",
+          "description": "Allow you to plumb secrets to the base builder in gcb builds.",
+          "x-intellij-html-description": "Allow you to plumb secrets to the base builder in gcb builds."
+        },
         "concurrency": {
           "type": "integer",
           "description": "how many artifacts can be built concurrently. 0 means \"no-limit\".",
@@ -2118,6 +2297,129 @@
           "description": "specifies a pre-build step to install the required tooling for QEMU emulation on the GoogleCloudBuild containers. This enables performing cross-platform builds on GoogleCloudBuild. If unspecified, Skaffold uses the `docker/binfmt` image by default.",
           "x-intellij-html-description": "specifies a pre-build step to install the required tooling for QEMU emulation on the GoogleCloudBuild containers. This enables performing cross-platform builds on GoogleCloudBuild. If unspecified, Skaffold uses the <code>docker/binfmt</code> image by default."
         },
+        "preBuildSteps": {
+          "items": {
+            "properties": {
+              "allowExitCodes": {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array",
+                "description": "represents the exit codes that are allowed to be returned by the step.",
+                "x-intellij-html-description": "represents the exit codes that are allowed to be returned by the step.",
+                "default": "[]"
+              },
+              "allowFailure": {
+                "type": "boolean",
+                "description": "represents whether the step is allowed to fail.",
+                "x-intellij-html-description": "represents whether the step is allowed to fail.",
+                "default": "false"
+              },
+              "args": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "description": "represents the arguments to the step.",
+                "x-intellij-html-description": "represents the arguments to the step.",
+                "default": "[]"
+              },
+              "automapSubstitutions": {
+                "type": "boolean",
+                "description": "represents whether to automap substitutions.",
+                "x-intellij-html-description": "represents whether to automap substitutions.",
+                "default": "false"
+              },
+              "dir": {
+                "type": "string",
+                "description": "represents the working directory for the step.",
+                "x-intellij-html-description": "represents the working directory for the step."
+              },
+              "entrypoint": {
+                "type": "string",
+                "description": "represents the entrypoint for the step.",
+                "x-intellij-html-description": "represents the entrypoint for the step."
+              },
+              "env": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "description": "represents the environment variables to set.",
+                "x-intellij-html-description": "represents the environment variables to set.",
+                "default": "[]"
+              },
+              "id": {
+                "type": "string",
+                "description": "id of the step.",
+                "x-intellij-html-description": "id of the step."
+              },
+              "name": {
+                "type": "string",
+                "description": "represents the name of the step.",
+                "x-intellij-html-description": "represents the name of the step."
+              },
+              "script": {
+                "type": "string",
+                "description": "represents the script to run.",
+                "x-intellij-html-description": "represents the script to run."
+              },
+              "secretEnv": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "description": "represents the environment variables to set from secret manager.",
+                "x-intellij-html-description": "represents the environment variables to set from secret manager.",
+                "default": "[]"
+              },
+              "timeout": {
+                "type": "string",
+                "description": "represents the timeout for the step.",
+                "x-intellij-html-description": "represents the timeout for the step."
+              },
+              "volumes": {
+                "items": {
+                  "$ref": "#/definitions/CBVolume"
+                },
+                "type": "array",
+                "description": "represents the volumes to mount for the step.",
+                "x-intellij-html-description": "represents the volumes to mount for the step."
+              },
+              "waitFor": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "description": "represents the steps that this step should wait for.",
+                "x-intellij-html-description": "represents the steps that this step should wait for.",
+                "default": "[]"
+              }
+            },
+            "preferredOrder": [
+              "name",
+              "id",
+              "args",
+              "env",
+              "allowFailure",
+              "allowExitCodes",
+              "dir",
+              "waitFor",
+              "entrypoint",
+              "secretEnv",
+              "volumes",
+              "timeout",
+              "script",
+              "automapSubstitutions"
+            ],
+            "additionalProperties": false,
+            "type": "object"
+          },
+          "type": "array",
+          "description": "Set the prebuild steps for the cloudbuild docker job.",
+          "x-intellij-html-description": "Set the prebuild steps for the cloudbuild docker job.",
+          "default": "[]"
+        },
         "projectId": {
           "type": "string",
           "description": "ID of your Cloud Platform Project. If it is not provided, Skaffold will guess it from the image name. For example, given the artifact image name `gcr.io/myproject/image`, Skaffold will use the `myproject` GCP project.",
@@ -2161,7 +2463,10 @@
         "workerPool",
         "region",
         "platformEmulatorInstallStep",
-        "serviceAccount"
+        "serviceAccount",
+        "availableSecrets",
+        "preBuildSteps",
+        "builderConfig"
       ],
       "additionalProperties": false,
       "type": "object",
@@ -2253,6 +2558,22 @@
       "type": "object",
       "description": "contains information on the origin of skaffold configurations copied from Google Cloud Storage.",
       "x-intellij-html-description": "contains information on the origin of skaffold configurations copied from Google Cloud Storage."
+    },
+    "GrypeTest": {
+      "properties": {
+        "severity": {
+          "type": "string",
+          "description": "severity of the vulnerability.",
+          "x-intellij-html-description": "severity of the vulnerability."
+        }
+      },
+      "preferredOrder": [
+        "severity"
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "a list of tests to run on images that Skaffold builds.",
+      "x-intellij-html-description": "a list of tests to run on images that Skaffold builds."
     },
     "Helm": {
       "required": [
@@ -3486,6 +3807,64 @@
       "description": "describes a lifecycle hook definition to execute on a named container.",
       "x-intellij-html-description": "describes a lifecycle hook definition to execute on a named container."
     },
+    "PackerArtifact": {
+      "properties": {
+        "buildArgs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "additional arguments passed to `packer build`.",
+          "x-intellij-html-description": "additional arguments passed to <code>packer build</code>.",
+          "default": "[]",
+          "examples": [
+            "[\"-force\", \"-debug\"]"
+          ]
+        },
+        "contextDir": {
+          "type": "string",
+          "description": "directory containing the Packer context. If not specified, it defaults to the directory containing the template file.",
+          "x-intellij-html-description": "directory containing the Packer context. If not specified, it defaults to the directory containing the template file."
+        },
+        "env": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "environment variables passed to Packer.",
+          "x-intellij-html-description": "environment variables passed to Packer.",
+          "default": "[]",
+          "examples": [
+            "[\"PKR_VAR_foo=bar\", \"PKR_VAR_baz=qux\"]"
+          ]
+        },
+        "postProcessors": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "specifies which post-processors to use. If empty, all post-processors in the template will be used.",
+          "x-intellij-html-description": "specifies which post-processors to use. If empty, all post-processors in the template will be used.",
+          "default": "[]"
+        },
+        "templatePath": {
+          "type": "string",
+          "description": "path to the Packer template file.",
+          "x-intellij-html-description": "path to the Packer template file."
+        }
+      },
+      "preferredOrder": [
+        "templatePath",
+        "buildArgs",
+        "postProcessors",
+        "env",
+        "contextDir"
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "builds images using HashiCorp Packer.",
+      "x-intellij-html-description": "builds images using HashiCorp Packer."
+    },
     "PlatformEmulatorInstallStep": {
       "required": [
         "image"
@@ -4493,6 +4872,174 @@
       "description": "*beta* a component of CustomTemplateTagger.",
       "x-intellij-html-description": "<em>beta</em> a component of CustomTemplateTagger."
     },
+    "TerraformDeploy": {
+      "properties": {
+        "deployments": {
+          "items": {
+            "$ref": "#/definitions/TerrformDeployments"
+          },
+          "type": "array",
+          "description": "a list of terraform deployments to run.",
+          "x-intellij-html-description": "a list of terraform deployments to run."
+        },
+        "hooks": {
+          "$ref": "#/definitions/TerraformDeployHooks",
+          "description": "describes a set of lifecycle host hooks that are executed before and after the Cloud Run deployer.",
+          "x-intellij-html-description": "describes a set of lifecycle host hooks that are executed before and after the Cloud Run deployer."
+        }
+      },
+      "preferredOrder": [
+        "deployments",
+        "hooks"
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "a list of terraform deployments to run.",
+      "x-intellij-html-description": "a list of terraform deployments to run."
+    },
+    "TerraformDeployHooks": {
+      "properties": {
+        "after": {
+          "items": {
+            "$ref": "#/definitions/HostHook"
+          },
+          "type": "array",
+          "description": "describes the list of lifecycle hooks to execute *after* the Cloud Run deployer.",
+          "x-intellij-html-description": "describes the list of lifecycle hooks to execute <em>after</em> the Cloud Run deployer."
+        },
+        "before": {
+          "items": {
+            "$ref": "#/definitions/HostHook"
+          },
+          "type": "array",
+          "description": "describes the list of lifecycle hooks to execute *before* the Cloud Run deployer.",
+          "x-intellij-html-description": "describes the list of lifecycle hooks to execute <em>before</em> the Cloud Run deployer."
+        }
+      },
+      "preferredOrder": [
+        "before",
+        "after"
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "describes the list of lifecycle hooks to execute in the host before and after the Cloud Run deployer.",
+      "x-intellij-html-description": "describes the list of lifecycle hooks to execute in the host before and after the Cloud Run deployer."
+    },
+    "TerrformDeployments": {
+      "properties": {
+        "autoApprove": {
+          "type": "boolean",
+          "description": "automatically approves Terraform operations without prompting.",
+          "x-intellij-html-description": "automatically approves Terraform operations without prompting.",
+          "default": "false"
+        },
+        "backendConfig": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object",
+          "description": "a map of backend configuration to be used by Terraform.",
+          "x-intellij-html-description": "a map of backend configuration to be used by Terraform.",
+          "default": "{}"
+        },
+        "command": {
+          "type": "string",
+          "description": "Terraform command to run. Defaults to \"apply\".",
+          "x-intellij-html-description": "Terraform command to run. Defaults to &quot;apply&quot;."
+        },
+        "dependsOn": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "a list of deployments that this deployment depends on.",
+          "x-intellij-html-description": "a list of deployments that this deployment depends on.",
+          "default": "[]"
+        },
+        "dir": {
+          "type": "string",
+          "description": "directory containing the Terraform configuration files. Defaults to the current working directory.",
+          "x-intellij-html-description": "directory containing the Terraform configuration files. Defaults to the current working directory."
+        },
+        "extraArgs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "additional arguments to be passed to the Terraform command.",
+          "x-intellij-html-description": "additional arguments to be passed to the Terraform command.",
+          "default": "[]"
+        },
+        "hooks": {
+          "$ref": "#/definitions/TerraformDeployHooks",
+          "description": "describes a set of lifecycle host hooks that are executed before and after the Cloud Run deployer.",
+          "x-intellij-html-description": "describes a set of lifecycle host hooks that are executed before and after the Cloud Run deployer."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the deployment. This is used to create ordering in the terraform deployment.",
+          "x-intellij-html-description": "The name of the deployment. This is used to create ordering in the terraform deployment."
+        },
+        "projectid": {
+          "type": "string",
+          "description": "the GCP Project to use for Cloud Run. If specified, all Services will be deployed to this project. If not specified, each Service will be deployed to the project specified in `metadata.namespace` of the Cloud Run manifest.",
+          "x-intellij-html-description": "the GCP Project to use for Cloud Run. If specified, all Services will be deployed to this project. If not specified, each Service will be deployed to the project specified in <code>metadata.namespace</code> of the Cloud Run manifest."
+        },
+        "region": {
+          "type": "string",
+          "description": "GCP location to use for the Cloud Run Deploy. Region Must be one of the regions listed in https://cloud.google.com/run/docs/locations.",
+          "x-intellij-html-description": "GCP location to use for the Cloud Run Deploy. Region Must be one of the regions listed in https://cloud.google.com/run/docs/locations."
+        },
+        "varFiles": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "a list of variable files to be used by Terraform.",
+          "x-intellij-html-description": "a list of variable files to be used by Terraform.",
+          "default": "[]"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object",
+          "description": "a map of variables to be passed to the Terraform command.",
+          "x-intellij-html-description": "a map of variables to be passed to the Terraform command.",
+          "default": "{}"
+        },
+        "workspace": {
+          "type": "string",
+          "description": "name of the Terraform workspace to use.",
+          "x-intellij-html-description": "name of the Terraform workspace to use."
+        },
+        "workspaceCommand": {
+          "type": "string",
+          "description": "Terraform workspace command to run before the main command. For example: \"new\" or \"select\".",
+          "x-intellij-html-description": "Terraform workspace command to run before the main command. For example: &quot;new&quot; or &quot;select&quot;."
+        }
+      },
+      "preferredOrder": [
+        "name",
+        "projectid",
+        "region",
+        "dir",
+        "vars",
+        "varFiles",
+        "backendConfig",
+        "command",
+        "extraArgs",
+        "workspaceCommand",
+        "workspace",
+        "autoApprove",
+        "hooks",
+        "dependsOn"
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "a list of terraform deployments to run.",
+      "x-intellij-html-description": "a list of terraform deployments to run."
+    },
     "TestCase": {
       "required": [
         "image"
@@ -4512,12 +5059,35 @@
           "description": "the set of custom tests to run after an artifact is built.",
           "x-intellij-html-description": "the set of custom tests to run after an artifact is built."
         },
+        "grypeTests": {
+          "items": {
+            "$ref": "#/definitions/GrypeTest"
+          },
+          "type": "array",
+          "description": "the Grype tests to run on that artifact.",
+          "x-intellij-html-description": "the Grype tests to run on that artifact.",
+          "examples": [
+            "[\"./test/*\"]"
+          ]
+        },
         "image": {
           "type": "string",
           "description": "artifact on which to run those tests.",
           "x-intellij-html-description": "artifact on which to run those tests.",
           "examples": [
             "gcr.io/k8s-skaffold/example"
+          ]
+        },
+        "packerTests": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "the Packer tests to run on that artifact.",
+          "x-intellij-html-description": "the Packer tests to run on that artifact.",
+          "default": "[]",
+          "examples": [
+            "[\"./test/*\"]"
           ]
         },
         "structureTests": {
@@ -4543,6 +5113,17 @@
           "examples": [
             "[\"--driver=tar\", \"--no-color\", \"-q\"]"
           ]
+        },
+        "trivyTests": {
+          "items": {
+            "$ref": "#/definitions/TrivyTest"
+          },
+          "type": "array",
+          "description": "the Trivy tests to run on that artifact.",
+          "x-intellij-html-description": "the Trivy tests to run on that artifact.",
+          "examples": [
+            "[\"./test/*\"]"
+          ]
         }
       },
       "preferredOrder": [
@@ -4550,7 +5131,10 @@
         "context",
         "custom",
         "structureTests",
-        "structureTestsArgs"
+        "structureTestsArgs",
+        "grypeTests",
+        "trivyTests",
+        "packerTests"
       ],
       "additionalProperties": false,
       "type": "object",
@@ -4585,6 +5169,22 @@
       "type": "object",
       "description": "describes the supported kpt transformers.",
       "x-intellij-html-description": "describes the supported kpt transformers."
+    },
+    "TrivyTest": {
+      "properties": {
+        "severity": {
+          "type": "string",
+          "description": "severity of the vulnerability.",
+          "x-intellij-html-description": "severity of the vulnerability."
+        }
+      },
+      "preferredOrder": [
+        "severity"
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "description": "a list of tests to run on images that Skaffold builds.",
+      "x-intellij-html-description": "a list of tests to run on images that Skaffold builds."
     },
     "Validator": {
       "required": [

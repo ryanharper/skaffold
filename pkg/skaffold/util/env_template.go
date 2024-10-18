@@ -26,15 +26,16 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 	"github.com/Masterminds/sprig/v3"
+	"github.com/ryanharper/skaffold/v2/pkg/skaffold/output/log"
 )
 
 // For testing
 var (
 	OSEnviron = os.Environ
 	funcsMap  = template.FuncMap{
-		"cmd": runCmdFunc,
+		"cmd":     runCmdFunc,
+		"include": includeFunc,
 	}
 )
 
@@ -59,7 +60,7 @@ func ExpandEnvTemplateOrFail(s string, envMap map[string]string) (string, error)
 
 // ParseEnvTemplate is a simple wrapper to parse an env template
 func ParseEnvTemplate(t string) (*template.Template, error) {
-	return template.New("envTemplate").Funcs(funcsMap).Funcs(sprig.FuncMap()).Parse(t)
+	return template.New("envTemplate").Funcs(funcsMap).Funcs(sprig.FuncMap()).Funcs(sprig.TxtFuncMap()).Parse(t)
 }
 
 // ExecuteEnvTemplate executes an envTemplate based on OS environment variables and a custom map
@@ -142,4 +143,11 @@ func runCmdFunc(name string, args ...string) (string, error) {
 	cmd := exec.Command(name, args...)
 	out, err := RunCmdOut(context.TODO(), cmd)
 	return strings.TrimSpace(string(out)), err
+}
+
+func includeFunc(name string, data interface{}) (string, error) {
+	// buf := new(strings.Builder)
+	// err := tmpl.ExecuteTemplate(buf, name, data)
+	// return buf.String(), err
+	return "", nil
 }

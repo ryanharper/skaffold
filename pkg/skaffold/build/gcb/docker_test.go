@@ -69,7 +69,8 @@ func TestDockerBuildSpec(t *testing.T) {
 					DiskSizeGb:  100,
 					MachineType: "n1-standard-1",
 				},
-				Timeout: "10m",
+				Timeout:          "10m",
+				AvailableSecrets: &cloudbuild.Secrets{},
 			},
 		},
 		{
@@ -104,7 +105,8 @@ func TestDockerBuildSpec(t *testing.T) {
 					DiskSizeGb:  100,
 					MachineType: "n1-standard-1",
 				},
-				Timeout: "10m",
+				Timeout:          "10m",
+				AvailableSecrets: &cloudbuild.Secrets{},
 			},
 		},
 		{
@@ -168,7 +170,8 @@ func TestDockerBuildSpec(t *testing.T) {
 					DiskSizeGb:  100,
 					MachineType: "n1-standard-1",
 				},
-				Timeout: "10m",
+				Timeout:          "10m",
+				AvailableSecrets: &cloudbuild.Secrets{},
 			},
 		},
 	}

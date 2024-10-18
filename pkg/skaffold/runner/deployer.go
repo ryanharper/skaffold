@@ -96,7 +96,7 @@ func GetDeployer(ctx context.Context, runCtx *runcontext.RunContext, labeller *l
 		cloudRunDeployFound := false
 
 		for _, d := range pipelines.Deployers() {
-			log.Entry(ctx).Infof("Creating Terraform deployer for config %s", d)
+			//log.Entry(ctx).Infof("Creating Terraform deployer for config %s", d.DeployType)
 			if d.DockerDeploy != nil || d.KptDeploy != nil || d.KubectlDeploy != nil {
 				nonHelmDeployFound = true
 			}

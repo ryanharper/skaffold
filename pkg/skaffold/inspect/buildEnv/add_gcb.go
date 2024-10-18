@@ -18,7 +18,6 @@ package inspect
 
 import (
 	"context"
-	"fmt"
 	"io"
 
 	"github.com/ryanharper/skaffold/v2/pkg/skaffold/config"
@@ -70,17 +69,13 @@ func AddGcbBuildEnv(ctx context.Context, out io.Writer, opts inspect.Options) er
 			if index < 0 {
 				index = len(cfg.Profiles)
 				cfg.Profiles = append(cfg.Profiles, latest.Profile{Name: opts.Profile})
-				fmt.Println("<><><><><><><><><><><><><><><")
+
 				//fmt.Println(cfg.Profiles[index].Build.GoogleCloudBuild.AvailableSecrets)
-				formatter.Write("<><><><><><><><><><><><><><><")
+
 				//formatter.Write("<><><><><><><><><><><><><><><" + cfg.Profiles[index].Build.GoogleCloudBuild.AvailableSecrets["something"])
 			}
 			if cfg.Profiles[index].Build.GoogleCloudBuild != nil && (cfg.Profiles[index].Build.GoogleCloudBuild != &latest.GoogleCloudBuild{}) {
 				formatter.WriteErr(inspect.BuildEnvAlreadyExists(inspect.BuildEnvs.GoogleCloudBuild, cfg.SourceFile, opts.Profile))
-				fmt.Println("<><><><><><><><><><><><><><><")
-				//fmt.Println(cfg.Profiles[index].Build.GoogleCloudBuild.AvailableSecrets)
-				formatter.Write("<><><><><><><><><><><><><><><")
-				//formatter.Write("<><><><><><><><><><><><><><><" + cfg.Profiles[index].Build.GoogleCloudBuild.AvailableSecrets["something"])
 				return err
 			}
 			cfg.Profiles[index].Build.GoogleCloudBuild = constructGcbDefinition(cfg.Profiles[index].Build.GoogleCloudBuild, opts.BuildEnvOptions)
@@ -123,7 +118,9 @@ func constructGcbDefinition(existing *latest.GoogleCloudBuild, opts inspect.Buil
 	if opts.WorkerPool != "" {
 		b.WorkerPool = opts.WorkerPool
 	}
-	b.AvailableSecrets = existing.AvailableSecrets
+	if len(b.AvailableSecrets.SecretManager) > 0 {
+		b.AvailableSecrets = existing.AvailableSecrets
+	}
 
 	return &b
 }

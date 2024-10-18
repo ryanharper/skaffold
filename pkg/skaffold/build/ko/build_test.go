@@ -106,7 +106,7 @@ func Test_getImportPath(t *testing.T) {
 				},
 				ImageName: "any-image-name-1",
 			},
-			expectedImportPath: "ko://github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/build/ko", // this package
+			expectedImportPath: "ko://github.com/ryanharper/skaffold/v2/pkg/skaffold/build/ko", // this package
 		},
 		{
 			description: "plain image name with workspace directory",

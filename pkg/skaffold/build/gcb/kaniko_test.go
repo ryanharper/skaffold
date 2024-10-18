@@ -496,7 +496,8 @@ func TestKanikoBuildSpec(t *testing.T) {
 					DiskSizeGb:  100,
 					MachineType: "n1-standard-1",
 				},
-				Timeout: "10m",
+				AvailableSecrets: &cloudbuild.Secrets{},
+				Timeout:          "10m",
 			}
 
 			t.CheckNoError(err)
