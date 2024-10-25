@@ -99,8 +99,9 @@ func (b *Builder) dockerBuildSpec(a *latest.Artifact, tag string, platforms plat
 	steps = append(steps, buildStep)
 
 	return cloudbuild.Build{
-		Steps:  steps,
-		Images: []string{tag},
+		Steps:         steps,
+		Images:        []string{tag},
+		Substitutions: b.Substitutions,
 	}, nil
 }
 
