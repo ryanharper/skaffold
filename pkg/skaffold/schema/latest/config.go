@@ -472,8 +472,8 @@ type GoogleCloudBuild struct {
 	// the Cloud Build API is enabled.
 	ServiceAccount string `yaml:"serviceAccount,omitempty"`
 
-	// Substitutions are any key value pairs that you wish to use as substitutions
-	// When Using Googl Cloud Build
+	// Substitutions are any key value pairs that you wish to use as substitutions.
+	// When Using Googl Cloud Build.
 	Substitutions map[string]string `yaml:"substitutions,omitempty"`
 
 	// AvailableSecrets Set the Available secrets for the cloudbuild docker job.

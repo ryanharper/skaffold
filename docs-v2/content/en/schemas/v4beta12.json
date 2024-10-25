@@ -2435,6 +2435,15 @@
           "description": "Google Cloud platform service account used by Cloud Build. If unspecified, it defaults to the Cloud Build service account generated when the Cloud Build API is enabled.",
           "x-intellij-html-description": "Google Cloud platform service account used by Cloud Build. If unspecified, it defaults to the Cloud Build service account generated when the Cloud Build API is enabled."
         },
+        "substitutions": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object",
+          "description": "any key value pairs that you wish to use as substitutions. When Using Googl Cloud Build.",
+          "x-intellij-html-description": "any key value pairs that you wish to use as substitutions. When Using Googl Cloud Build.",
+          "default": "{}"
+        },
         "timeout": {
           "type": "string",
           "description": "amount of time (in seconds) that this build should be allowed to run. See [Cloud Build Reference](https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#resource-build).",
@@ -2464,6 +2473,7 @@
         "region",
         "platformEmulatorInstallStep",
         "serviceAccount",
+        "substitutions",
         "availableSecrets",
         "preBuildSteps",
         "builderConfig"
