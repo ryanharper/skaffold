@@ -102,6 +102,7 @@ func (b *Builder) dockerBuildSpec(a *latest.Artifact, tag string, platforms plat
 		Steps:         steps,
 		Images:        []string{tag},
 		Substitutions: b.Substitutions,
+		Timeout:       b.Timeout,
 	}, nil
 }
 
