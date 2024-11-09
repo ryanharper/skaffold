@@ -2,8 +2,6 @@ module github.com/ryanharper/skaffold/v2
 
 go 1.22.9
 
-toolchain go1.22.9
-
 require (
 	4d63.com/tz v1.2.0
 	cloud.google.com/go/cloudbuild v1.15.1
@@ -25,7 +23,7 @@ require (
 	github.com/containerd/containerd v1.7.13
 	github.com/distribution/reference v0.5.0
 	github.com/docker/cli v25.0.3+incompatible
-	github.com/docker/distribution v2.8.2+incompatible
+	github.com/docker/distribution v2.8.3+incompatible
 	github.com/docker/docker v25.0.6+incompatible
 	github.com/docker/go-connections v0.5.0
 	github.com/dustin/go-humanize v1.0.1
@@ -80,11 +78,11 @@ require (
 	go.opentelemetry.io/otel/sdk v1.24.0
 	go.opentelemetry.io/otel/sdk/metric v1.24.0
 	go.opentelemetry.io/otel/trace v1.24.0
-	golang.org/x/crypto v0.26.0
+	golang.org/x/crypto v0.29.0
 	golang.org/x/oauth2 v0.19.0
-	golang.org/x/sync v0.8.0
-	golang.org/x/sys v0.23.0
-	golang.org/x/term v0.23.0
+	golang.org/x/sync v0.9.0
+	golang.org/x/sys v0.27.0
+	golang.org/x/term v0.26.0
 	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d
 	google.golang.org/api v0.172.0
 	google.golang.org/genproto v0.0.0-20240311173647-c811ad7063a7
@@ -278,8 +276,8 @@ require (
 	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/exp v0.0.0-20231108232855-2478ac86f678 // indirect
 	golang.org/x/mod v0.17.0 // indirect
-	golang.org/x/net v0.25.0 // indirect
-	golang.org/x/text v0.17.0 // indirect
+	golang.org/x/net v0.31.0 // indirect
+	golang.org/x/text v0.20.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240318140521-94a12d6c2237 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
